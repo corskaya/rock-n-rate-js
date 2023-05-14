@@ -1,9 +1,41 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./AppHeader.module.css";
 import logo from "../../assets/logo.PNG";
 import { AiOutlineSearch } from "react-icons/ai";
 
+const primaryNavLinks = [
+  {
+    label: "Login",
+    path: "/login",
+  },
+  {
+    label: "Register",
+    path: "/register",
+  },
+];
+
+const secondaryNavLinks = [
+  {
+    label: "Home",
+    path: "/",
+  },
+  {
+    label: "Artists",
+    path: "/artists",
+  },
+  {
+    label: "Albums",
+    path: "/albums",
+  },
+  {
+    label: "Songs",
+    path: "/songs",
+  },
+];
+
 function AppHeader() {
+  const location = useLocation();
+
   return (
     <div className={styles.headerContainer}>
       <div className={styles.leftPart}>
@@ -20,46 +52,41 @@ function AppHeader() {
           <input className={styles.navInput} placeholder="Quick search" />
         </div>
         <nav className={styles.navContainer}>
-          <Link
-            className={`${styles.navLink} ${styles.navLinkSecondary}`}
-            to="/"
-          >
-            Home
-          </Link>
-          <Link
-            className={`${styles.navLink} ${styles.navLinkSecondary}`}
-            to="/artists"
-          >
-            Artists
-          </Link>
-          <Link
-            className={`${styles.navLink} ${styles.navLinkSecondary}`}
-            to="/albums"
-          >
-            Albums
-          </Link>
-          <Link
-            className={`${styles.navLink} ${styles.navLinkSecondary}`}
-            to="/songs"
-          >
-            Songs
-          </Link>
+          {secondaryNavLinks.map((navLink) => (
+            <Link
+              key={navLink.path}
+              className={`${styles.navLink} ${
+                location.pathname === navLink.path
+                  ? styles.navLinkSelected
+                  : styles.navLinkSecondary
+              }`}
+              to={navLink.path}
+            >
+              {navLink.label}
+            </Link>
+          ))}
           <div>
-            <Link
-              className={`${styles.navLink} ${styles.navLinkPrimary}`}
-              to="/login"
-            >
-              Login
-            </Link>
-            <span className={`${styles.navLink} ${styles.navLinkSecondary}`}>
-              |
-            </span>
-            <Link
-              className={`${styles.navLink} ${styles.navLinkPrimary}`}
-              to="/register"
-            >
-              Register
-            </Link>
+            {primaryNavLinks.map((navLink, index) => (
+              <>
+                <Link
+                  className={`${styles.navLink} ${
+                    location.pathname === navLink.path
+                      ? styles.navLinkSelected
+                      : styles.navLinkPrimary
+                  }`}
+                  to={navLink.path}
+                >
+                  {navLink.label}
+                </Link>
+                {index !== primaryNavLinks.length - 1 && (
+                  <span
+                    className={`${styles.navLink} ${styles.navLinkSecondary}`}
+                  >
+                    |
+                  </span>
+                )}
+              </>
+            ))}
           </div>
         </nav>
       </div>

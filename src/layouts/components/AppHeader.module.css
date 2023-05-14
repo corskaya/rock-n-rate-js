@@ -100,3 +100,13 @@
   transition: 0.4s;
   color: #f1ffff;
 }
+
+.navLinkSelected {
+  color: #6ac045;
+}
+
+@media (max-width: 1200px) {
+  .description {
+    display: none;
+  }
+}
