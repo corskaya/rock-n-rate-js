@@ -1,0 +1,102 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #1d1d1d;
+  height: 46px;
+  border-bottom: 1px solid #2d3030;
+  padding-top: 1px;
+}
+
+.leftPart {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 1.6vw;
+  width: 30vw;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+}
+
+.description {
+  color: #829191;
+  font-weight: 400;
+}
+
+.rightPart {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: 50vw;
+  gap: 1vw;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
+}
+
+.navInputContainer {
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(75, 75, 75);
+  border-radius: 24px;
+  height: 18px;
+}
+
+.navInputIcon {
+  font-size: 13px;
+  color: #829191;
+  margin: 0 4px;
+}
+
+.navInput {
+  background: none;
+  border: none;
+  color: #829191;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.navInput:focus {
+  outline: none;
+}
+
+.navInput:focus::placeholder {
+  color: transparent;
+}
+
+.navLink {
+  font-size: 0.85em;
+  text-decoration: none;
+  margin: 0 3px;
+}
+
+.navLinkPrimary {
+  color: #f1ffff;
+}
+
+.navLinkPrimary:hover {
+  transition: 0.4s;
+  color: #829191;
+}
+
+.navLinkSecondary {
+  color: #829191;
+}
+
+.navLinkSecondary:hover {
+  transition: 0.4s;
+  color: #f1ffff;
+}
