@@ -27,7 +27,7 @@
 }
 
 .description {
-  color: #829191;
+  color: #919191;
   font-weight: 400;
   font-size: 1.1em;
 }
@@ -89,7 +89,7 @@
 }
 
 .navLinkPrimary:hover {
-  transition: 0.4s;
+  transition: 0.5s;
   color: #829191;
 }
 
@@ -98,7 +98,7 @@
 }
 
 .navLinkSecondary:hover {
-  transition: 0.4s;
+  transition: 0.5s;
   color: #f1ffff;
 }
 

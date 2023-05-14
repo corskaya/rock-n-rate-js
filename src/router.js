@@ -7,6 +7,7 @@ import Artists from "./pages/artists/Index";
 import Songs from "./pages/songs/Index";
 import NotFound from "./pages/404/Index";
 import Contact from "./pages/contact/Index";
+import ForgotPassword from "./pages/forgotPassword/Index";
 import Layout from "./layouts/Layout";
 import AppContent from "./layouts/components/AppContent";
 
@@ -21,6 +22,10 @@ function Router() {
         <Route path="artists" element={<AppContent page={<Artists />} />} />
         <Route path="songs" element={<AppContent page={<Songs />} />} />
         <Route path="contact" element={<AppContent page={<Contact />} />} />
+        <Route
+          path="forgot-password"
+          element={<AppContent page={<ForgotPassword />} />}
+        />
         <Route path="*" element={<AppContent page={<NotFound />} />} />
       </Route>
     </Routes>
