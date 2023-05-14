@@ -36,7 +36,7 @@
   display: flex;
   justify-content: right;
   align-items: center;
-  width: 50vw;
+  width: 40vw;
   gap: 1vw;
 }
 
@@ -51,7 +51,7 @@
   padding: 4px;
   display: flex;
   align-items: center;
-  border: 1px solid rgb(75, 75, 75);
+  border: 2px solid #353535;
   border-radius: 24px;
   width: 240px;
   height: 24px;

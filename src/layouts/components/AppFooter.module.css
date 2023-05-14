@@ -1,0 +1,29 @@
+.footerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #171717;
+  height: 58px;
+  gap: 8px;
+  border-top: 1px solid #2d3030;
+  padding-bottom: 1px;
+}
+
+.copyrightContainer {
+  color: #f1ffff;
+}
+
+.separator {
+  color: #f1ffff;
+}
+
+.footerLink {
+  font-size: 0.9em;
+  text-decoration: none;
+  color: #829191;
+}
+
+.footerLink:hover {
+  transition: 0.4s;
+  color: #f1ffff;
+}
