@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./AppHeader.module.css";
 import logo from "../../assets/logo.PNG";
@@ -68,7 +69,7 @@ function AppHeader() {
             ))}
             <div>
               {primaryNavLinks.map((navLink, index) => (
-                <>
+                <Fragment key={navLink.path}>
                   <Link
                     className={`${styles.navLink} ${
                       location.pathname === navLink.path
@@ -86,7 +87,7 @@ function AppHeader() {
                       |
                     </span>
                   )}
-                </>
+                </Fragment>
               ))}
             </div>
           </nav>
