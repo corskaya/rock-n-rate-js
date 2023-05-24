@@ -1,15 +1,35 @@
 import { Link } from "react-router-dom";
-import FormField from "./components/FormField";
 import styles from "./styles.module.css";
+import Input from "../../components/Input";
+import Label from "../../components/Label";
+import Button from "../../components/Button";
 
 function Login() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const usernameOrEmail = e.target.elements.usernameOrEmail.value;
+    const password = e.target.elements.password.value;
+
+    console.log(usernameOrEmail, password);
+  };
+
   return (
     <div className={styles.loginContainer}>
       <div className={styles.formPart}>
-        <div className={styles.formContainer}>
+        <form className={styles.formContainer} onSubmit={handleSubmit}>
           <h2 className={styles.loginLabel}>User login</h2>
-          <FormField label="Username or Email" type="text" />
-          <FormField label="Password" type="password" />
+          <div className={styles.formFieldContainer}>
+            <Label>Username or Email</Label>
+            <div>
+              <Input name="usernameOrEmail" type="text" />
+            </div>
+          </div>
+          <div className={styles.formFieldContainer}>
+            <Label>Password</Label>
+            <div>
+              <Input name="password" type="password" />
+            </div>
+          </div>
           <div className={styles.formFooter}>
             <div className={styles.formFooterLinks}>
               <Link className={styles.formFooterLink} to="/register">
@@ -19,11 +39,9 @@ function Login() {
                 Forgot password?
               </Link>
             </div>
-            <button className={styles.loginSubmitButton} type="submit">
-              Login
-            </button>
+            <Button type="submit">Login</Button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
