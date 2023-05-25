@@ -8,7 +8,7 @@
 }
 
 .formContainer {
-  width: 48.8%;
+  width: 100%;
 }
 
 .formLabel {
@@ -20,7 +20,14 @@
   margin: 0 0 40px 0;
 }
 
+.formFields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.4%;
+}
+
 .formFieldContainer {
+  width: 48.8%;
   margin-bottom: 24px;
 }
 
@@ -33,12 +40,6 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 16px;
-}
-
-.formFooterLinks {
-  display: flex;
-  flex-direction: column;
-  gap: 4.2px;
 }
 
 .formFooterLink {

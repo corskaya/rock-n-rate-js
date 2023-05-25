@@ -14,20 +14,28 @@ function Login() {
   };
 
   return (
-    <div className={styles.loginContainer}>
-      <div className={styles.formPart}>
+    <div className={styles.container}>
+      <div className={styles.innerContainer}>
         <form className={styles.formContainer} onSubmit={handleSubmit}>
-          <h2 className={styles.loginLabel}>User login</h2>
+          <h2 className={styles.formLabel}>User login</h2>
           <div className={styles.formFieldContainer}>
-            <Label>Username or Email</Label>
+            <Label>Username or Email:</Label>
             <div>
-              <Input name="usernameOrEmail" type="text" />
+              <Input
+                name="usernameOrEmail"
+                type="text"
+                className={styles.formInput}
+              />
             </div>
           </div>
           <div className={styles.formFieldContainer}>
-            <Label>Password</Label>
+            <Label>Password:</Label>
             <div>
-              <Input name="password" type="password" />
+              <Input
+                name="password"
+                type="password"
+                className={styles.formInput}
+              />
             </div>
           </div>
           <div className={styles.formFooter}>
