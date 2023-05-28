@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
-import Form from "../../components/Form";
-import Label from "../../components/Label";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
+import { Form, Label, Input, Button } from "../../components";
 
 function Register() {
   const handleSubmit = (values) => {

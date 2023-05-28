@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Form, Label, Input, Button } from "../../components";
 import styles from "./styles.module.css";
-import Form from "../../components/Form";
-import Label from "../../components/Label";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
+import { login } from "./slice";
 
 function Login() {
+  const dispatch = useDispatch();
+
   const handleSubmit = (values) => {
     console.log(values);
+    dispatch(login(values));
   };
 
   return (
