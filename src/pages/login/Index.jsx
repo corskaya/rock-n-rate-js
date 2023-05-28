@@ -1,22 +1,19 @@
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
-import Input from "../../components/Input";
+import Form from "../../components/Form";
 import Label from "../../components/Label";
+import Input from "../../components/Input";
 import Button from "../../components/Button";
 
 function Login() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const usernameOrEmail = e.target.elements.usernameOrEmail.value;
-    const password = e.target.elements.password.value;
-
-    console.log(usernameOrEmail, password);
+  const handleSubmit = (values) => {
+    console.log(values);
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.innerContainer}>
-        <form className={styles.formContainer} onSubmit={handleSubmit}>
+        <Form className={styles.formContainer} onFinish={handleSubmit}>
           <h2 className={styles.formLabel}>User login</h2>
           <div className={styles.formFieldContainer}>
             <Label>Username or Email:</Label>
@@ -49,7 +46,7 @@ function Login() {
             </div>
             <Button type="submit">Login</Button>
           </div>
-        </form>
+        </Form>
       </div>
     </div>
   );

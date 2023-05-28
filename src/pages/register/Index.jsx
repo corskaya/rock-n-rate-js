@@ -1,22 +1,19 @@
-import styles from "./styles.module.css";
-import Input from "../../components/Input";
-import Label from "../../components/Label";
-import Button from "../../components/Button";
 import { Link } from "react-router-dom";
+import styles from "./styles.module.css";
+import Form from "../../components/Form";
+import Label from "../../components/Label";
+import Input from "../../components/Input";
+import Button from "../../components/Button";
 
 function Register() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const username = e.target.elements.username.value;
-    const password = e.target.elements.password.value;
-
-    console.log(username, password);
+  const handleSubmit = (values) => {
+    console.log(values);
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.innerContainer}>
-        <form className={styles.formContainer} onSubmit={handleSubmit}>
+        <Form className={styles.formContainer} onFinish={handleSubmit}>
           <h2 className={styles.formLabel}>Register an Account</h2>
           <div className={styles.formFields}>
             <div className={styles.formFieldContainer}>
@@ -58,7 +55,7 @@ function Register() {
             </Link>
             <Button type="submit">Register</Button>
           </div>
-        </form>
+        </Form>
       </div>
     </div>
   );
