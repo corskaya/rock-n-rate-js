@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import styles from "./AppContent.module.css";
+import styles from "./styles.module.css";
 
 function AppContent({ page }) {
   return (

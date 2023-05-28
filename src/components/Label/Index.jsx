@@ -1,4 +1,4 @@
-import styles from "./Label.module.css";
+import styles from "./styles.module.css";
 
 function Label({ children, className, ...rest }) {
   return (

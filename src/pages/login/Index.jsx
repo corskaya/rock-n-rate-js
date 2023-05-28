@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { Form, Label, Input, Button } from "../../components";
+import { useDispatch, useSelector } from "react-redux";
+import { Form, Label, Input, Button, Message } from "../../components";
 import styles from "./styles.module.css";
 import { login } from "./slice";
 
 function Login() {
+  const { loginRejected, errorMessage } = useSelector((state) => state.login);
   const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
@@ -37,6 +38,11 @@ function Login() {
               />
             </div>
           </div>
+          {loginRejected && (
+            <div className={styles.errorMessageContainer}>
+              <Message>{errorMessage}</Message>
+            </div>
+          )}
           <div className={styles.formFooter}>
             <div className={styles.formFooterLinks}>
               <Link className={styles.formFooterLink} to="/register">

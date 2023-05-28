@@ -1,6 +1,6 @@
-import AppHeader from "./components/AppHeader";
-import AppContent from "./components/AppContent";
-import AppFooter from "./components/AppFooter";
+import AppHeader from "./components/AppHeader/Index";
+import AppContent from "./components/AppContent/Index";
+import AppFooter from "./components/AppFooter/Index";
 import styles from "./Layout.module.css";
 
 function Layout() {

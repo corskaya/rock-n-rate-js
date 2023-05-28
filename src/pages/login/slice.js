@@ -42,14 +42,16 @@ const loginReducer = createSlice({
       })
       .addCase(login.fulfilled, (state, { payload }) => {
         state.loginPending = false;
+        state.loginRejected = false;
         state.loginFulfilled = true;
         state.user = payload.user;
         state.token = payload.token;
       })
       .addCase(login.rejected, (state, { payload }) => {
+        console.log(payload);
         state.loginPending = false;
         state.loginRejected = true;
-        state.errorMessage = payload.error;
+        state.errorMessage = payload.message;
       });
   },
 });

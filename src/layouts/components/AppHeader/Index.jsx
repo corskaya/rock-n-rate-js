@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import { Link, useLocation } from "react-router-dom";
-import styles from "./AppHeader.module.css";
-import logo from "../../assets/logo.PNG";
 import { AiOutlineSearch } from "react-icons/ai";
+import styles from "./styles.module.css";
+import logo from "../../../assets/logo.PNG";
 
 const primaryNavLinks = [
   {

@@ -1,4 +1,5 @@
-export { default as Form } from "./Form";
-export { default as Label } from "./Label";
-export { default as Input } from "./Input";
-export { default as Button } from "./Button";
+export { default as Form } from "./Form/Index";
+export { default as Label } from "./Label/Index";
+export { default as Input } from "./Input/Index";
+export { default as Button } from "./Button/Index";
+export { default as Message } from "./Message/Index";

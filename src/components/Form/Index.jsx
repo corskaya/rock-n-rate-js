@@ -18,13 +18,13 @@ function Form({ children, className, onFinish, ...rest }) {
 
   const traverseChildren = (children) => {
     return React.Children.map(children, (child) => {
-      if (child.props?.children) {
+      if (child?.props?.children) {
         return React.cloneElement(child, {
           children: traverseChildren(child.props.children),
         });
       }
 
-      if (child.props?.name) {
+      if (child?.props?.name) {
         return React.cloneElement(child, {
           value: formValues[child.props.name] || "",
           onChange: handleChange,
