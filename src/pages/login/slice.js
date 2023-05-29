@@ -19,7 +19,8 @@ export const login = createAsyncThunk(
       if (status !== 200) {
         return thunkAPI.rejectWithValue(data);
       }
-      return status;
+
+      return data;
     } catch (e) {
       console.log("loginReducer/login err:", e.response.data);
       return thunkAPI.rejectWithValue(e.response.data);
@@ -39,8 +40,10 @@ const loginReducer = createSlice({
     builder
       .addCase(login.pending, (state) => {
         state.loginPending = true;
+        state.loginRejected = false;
       })
       .addCase(login.fulfilled, (state, { payload }) => {
+        console.log(payload);
         state.loginPending = false;
         state.loginRejected = false;
         state.loginFulfilled = true;

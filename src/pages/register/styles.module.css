@@ -35,6 +35,11 @@
   width: 100%;
 }
 
+.errorMessageContainer {
+  display: flex;
+  justify-content: right;
+}
+
 .formFooter {
   display: flex;
   justify-content: space-between;

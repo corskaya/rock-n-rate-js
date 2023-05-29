@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.css";
-import { Form, Label, Input, Button } from "../../components";
+import { Form, Label, Input, Button, Message, Loading } from "../../components";
+import { register } from "./slice";
 
 function Register() {
+  const { registerPending, registerRejected, errorMessage } = useSelector(
+    (state) => state.register
+  );
+  const dispatch = useDispatch();
+
   const handleSubmit = (values) => {
-    console.log(values);
+    dispatch(register(values));
   };
 
   return (
@@ -46,11 +53,18 @@ function Register() {
               </div>
             </div>
           </div>
+          {registerRejected && (
+            <div className={styles.errorMessageContainer}>
+              <Message>{errorMessage}</Message>
+            </div>
+          )}
           <div className={styles.formFooter}>
             <Link className={styles.formFooterLink} to="/login">
               Already have an account?
             </Link>
-            <Button type="submit">Register</Button>
+            <Button type="submit">
+              {registerPending ? <Loading /> : "Register"}
+            </Button>
           </div>
         </Form>
       </div>

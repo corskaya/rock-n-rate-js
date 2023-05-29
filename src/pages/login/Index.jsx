@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Label, Input, Button, Message } from "../../components";
+import { Form, Label, Input, Button, Message, Loading } from "../../components";
 import styles from "./styles.module.css";
 import { login } from "./slice";
 
 function Login() {
-  const { loginRejected, errorMessage } = useSelector((state) => state.login);
+  const { loginPending, loginRejected, errorMessage } = useSelector(
+    (state) => state.login
+  );
   const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
-    console.log(values);
     dispatch(login(values));
   };
 
@@ -52,7 +53,9 @@ function Login() {
                 Forgot password?
               </Link>
             </div>
-            <Button type="submit">Login</Button>
+            <Button type="submit">
+              {loginPending ? <Loading /> : "Login"}
+            </Button>
           </div>
         </Form>
       </div>

@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { AiOutlineSearch } from "react-icons/ai";
+import { SearchOutlined } from "@ant-design/icons";
 import styles from "./styles.module.css";
 import logo from "../../../assets/logo.PNG";
 
@@ -50,7 +50,7 @@ function AppHeader() {
         </div>
         <div className={styles.rightPart}>
           <div className={styles.navInputContainer}>
-            <AiOutlineSearch className={styles.navInputIcon} />
+            <SearchOutlined className={styles.navInputIcon} />
             <input className={styles.navInput} placeholder="Quick search" />
           </div>
           <nav className={styles.navContainer}>

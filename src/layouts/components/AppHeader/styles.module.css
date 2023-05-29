@@ -55,7 +55,7 @@
 }
 
 .navInputContainer {
-  padding: 4px;
+  padding: 4px 4px 4px 6px;
   display: flex;
   align-items: center;
   border: 2px solid #353535;
@@ -65,7 +65,7 @@
 }
 
 .navInputIcon {
-  font-size: 16px;
+  font-size: 14px;
   color: #829191;
   margin: 0 4px;
 }
