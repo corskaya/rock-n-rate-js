@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import loginReducer from "./pages/login/slice";
+import loginReducer, { setLoginStatus } from "./pages/login/slice";
 import registerReducer from "./pages/register/slice";
 
 const store = configureStore({
@@ -8,5 +8,12 @@ const store = configureStore({
     register: registerReducer,
   },
 });
+
+const token = localStorage.getItem("token");
+const user = JSON.parse(localStorage.getItem("user"));
+
+if (token && user) {
+  store.dispatch(setLoginStatus({ user, token }));
+}
 
 export default store;
