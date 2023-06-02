@@ -22,8 +22,9 @@ export const login = createAsyncThunk(
 
       return data;
     } catch (e) {
-      console.log("loginReducer/login err:", e.response.data);
-      return thunkAPI.rejectWithValue(e.response.data);
+      return e.response
+        ? thunkAPI.rejectWithValue(e.response.data)
+        : thunkAPI.rejectWithValue(e);
     }
   }
 );
@@ -35,6 +36,13 @@ const loginReducer = createSlice({
     setLoginStatus: (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
+    },
+    logout: (state, action) => {
+      state.user = null;
+      state.token = null;
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
+      action.payload.navigate("/");
     },
   },
   extraReducers: (builder) => {
@@ -60,6 +68,6 @@ const loginReducer = createSlice({
   },
 });
 
-export const { setLoginStatus } = loginReducer.actions;
+export const { setLoginStatus, logout } = loginReducer.actions;
 
 export default loginReducer.reducer;

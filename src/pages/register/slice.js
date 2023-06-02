@@ -10,18 +10,20 @@ const initialState = {
 
 export const register = createAsyncThunk(
   "registerReducer/register",
-  async (formData, thunkAPI) => {
+  async ({ formData, navigate }, thunkAPI) => {
     try {
       const { data, status } = await post("/user/register", formData);
 
-      if (status !== 200) {
+      if (status !== 201) {
         return thunkAPI.rejectWithValue(data);
       }
 
+      navigate("/login");
       return data;
     } catch (e) {
-      console.log("registerReducer/register err:", e.response.data);
-      return thunkAPI.rejectWithValue(e.response.data);
+      return e.response
+        ? thunkAPI.rejectWithValue(e.response.data)
+        : thunkAPI.rejectWithValue(e);
     }
   }
 );
@@ -42,7 +44,6 @@ const registerReducer = createSlice({
         state.registerFulfilled = true;
       })
       .addCase(register.rejected, (state, { payload }) => {
-        console.log(payload);
         state.registerPending = false;
         state.registerRejected = true;
         state.errorMessage = payload.message;

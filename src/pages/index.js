@@ -11,3 +11,4 @@ export const Contact = React.lazy(() => import("./contact/Index"));
 export const ForgotPassword = React.lazy(() =>
   import("./forgotPassword/Index")
 );
+export const User = React.lazy(() => import("./user/Index"));

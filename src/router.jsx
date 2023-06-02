@@ -11,6 +11,7 @@ import {
   NotFound,
   Contact,
   ForgotPassword,
+  User,
 } from "./pages";
 import { Layout, AppContent } from "./layouts";
 import { Loading } from "./components";
@@ -32,19 +33,20 @@ function Router() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={renderPage(<Home />)} />
-        <Route path="login" element={<NotAuthRoute component={<Login />} />} />
+        <Route path="/login" element={<NotAuthRoute component={<Login />} />} />
         <Route
-          path="register"
+          path="/register"
           element={<NotAuthRoute component={<Register />} />}
         />
         <Route
-          path="forgot-password"
+          path="/forgot-password"
           element={<NotAuthRoute component={<ForgotPassword />} />}
         />
-        <Route path="albums" element={renderPage(<Albums />)} />
-        <Route path="artists" element={renderPage(<Artists />)} />
-        <Route path="songs" element={renderPage(<Songs />)} />
-        <Route path="contact" element={renderPage(<Contact />)} />
+        <Route path="/albums" element={renderPage(<Albums />)} />
+        <Route path="/artists" element={renderPage(<Artists />)} />
+        <Route path="/songs" element={renderPage(<Songs />)} />
+        <Route path="/contact" element={renderPage(<Contact />)} />
+        <Route path="/user/:username" element={renderPage(<User />)} />
         <Route path="*" element={renderPage(<NotFound />)} />
       </Route>
     </Routes>

@@ -113,6 +113,12 @@
   color: #6ac045;
 }
 
+.profileContainer {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
 @media (max-width: 1350px) {
   .description {
     display: none;

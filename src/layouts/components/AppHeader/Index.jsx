@@ -1,8 +1,9 @@
 import { Fragment } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { SearchOutlined } from "@ant-design/icons";
+import { SearchOutlined, UserOutlined } from "@ant-design/icons";
 import styles from "./styles.module.css";
 import logo from "../../../assets/logo.PNG";
+import { useSelector } from "react-redux";
 
 const primaryNavLinks = [
   {
@@ -36,6 +37,8 @@ const secondaryNavLinks = [
 
 function AppHeader() {
   const location = useLocation();
+  const token = useSelector((state) => state.login.token);
+  const user = useSelector((state) => state.login.user);
 
   return (
     <div className={styles.headerFix}>
@@ -67,29 +70,44 @@ function AppHeader() {
                 {navLink.label}
               </Link>
             ))}
-            <div>
-              {primaryNavLinks.map((navLink, index) => (
-                <Fragment key={navLink.path}>
-                  <Link
-                    className={`${styles.navLink} ${
-                      location.pathname === navLink.path
-                        ? styles.navLinkSelected
-                        : styles.navLinkPrimary
-                    }`}
-                    to={navLink.path}
-                  >
-                    {navLink.label}
-                  </Link>
-                  {index !== primaryNavLinks.length - 1 && (
-                    <span
-                      className={`${styles.navLink} ${styles.navLinkSecondary}`}
+            {!token && (
+              <div>
+                {primaryNavLinks.map((navLink, index) => (
+                  <Fragment key={navLink.path}>
+                    <Link
+                      className={`${styles.navLink} ${
+                        location.pathname === navLink.path
+                          ? styles.navLinkSelected
+                          : styles.navLinkPrimary
+                      }`}
+                      to={navLink.path}
                     >
-                      |
-                    </span>
-                  )}
-                </Fragment>
-              ))}
-            </div>
+                      {navLink.label}
+                    </Link>
+                    {index !== primaryNavLinks.length - 1 && (
+                      <span
+                        className={`${styles.navLink} ${styles.navLinkSecondary}`}
+                      >
+                        |
+                      </span>
+                    )}
+                  </Fragment>
+                ))}
+              </div>
+            )}
+            {token && user && (
+              <Link
+                className={`${styles.navLink} ${
+                  location.pathname === `/user/${user.username}`
+                    ? styles.navLinkSelected
+                    : styles.navLinkPrimary
+                } ${styles.profileContainer}`}
+                to={`/user/${user.username}`}
+              >
+                <UserOutlined style={{ fontSize: 16 }} />
+                <div>{user.username}</div>
+              </Link>
+            )}
           </nav>
         </div>
       </div>

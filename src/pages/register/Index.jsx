@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.css";
 import { Form, Label, Input, Button, Message, Loading } from "../../components";
@@ -9,9 +9,10 @@ function Register() {
     (state) => state.register
   );
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (values) => {
-    dispatch(register(values));
+    dispatch(register({ formData: values, navigate }));
   };
 
   return (
