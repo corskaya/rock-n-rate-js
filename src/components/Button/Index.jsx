@@ -2,7 +2,7 @@ import styles from "./styles.module.css";
 
 function Button({ children, className, ...rest }) {
   return (
-    <button className={styles.button} {...rest}>
+    <button className={`${styles.button} ${className}`} {...rest}>
       {children}
     </button>
   );

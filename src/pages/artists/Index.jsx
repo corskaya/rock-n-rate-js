@@ -1,7 +1,9 @@
+import { Card } from "../../components";
+
 function Artists() {
   return (
     <div>
-      <h2>Artists</h2>
+      <Card />
     </div>
   );
 }
