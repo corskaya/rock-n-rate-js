@@ -1,7 +1,7 @@
 const genres = Object.freeze({
+  all: "All",
   african: "African",
   asian: "Asian",
-  southeastAsian: "Southeast Asian",
   avantGarde: "Avant-garde",
   blues: "Blues",
   caribbean: "Caribbean",
@@ -15,6 +15,7 @@ const genres = Object.freeze({
   pop: "Pop",
   rnb: "R&B and soul",
   rock: "Rock",
+  southeastAsian: "Southeast Asian",
 });
 
 export default genres;

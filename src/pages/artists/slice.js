@@ -11,7 +11,7 @@ const initialState = {
 
 export const getArtists = createAsyncThunk(
   "artists/getArtists",
-  async (thunkAPI) => {
+  async (query, thunkAPI) => {
     try {
       const { data, status } = await get("/artist");
 
