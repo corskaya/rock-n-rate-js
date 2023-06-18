@@ -23,35 +23,27 @@ function Register() {
           <div className={styles.formFields}>
             <div className={styles.formFieldContainer}>
               <Label>Username:</Label>
-              <div>
-                <Input name="username" className={styles.formInput} />
-              </div>
+              <Input name="username" className={styles.formInput} />
             </div>
             <div className={styles.formFieldContainer}>
-              <Label>Email (no confirmation needed):</Label>
-              <div>
-                <Input name="email" className={styles.formInput} />
-              </div>
+              <Label>E-Mail (no confirmation needed):</Label>
+              <Input name="email" className={styles.formInput} />
             </div>
             <div className={styles.formFieldContainer}>
               <Label>Password:</Label>
-              <div>
-                <Input
-                  name="password"
-                  type="password"
-                  className={styles.formInput}
-                />
-              </div>
+              <Input
+                name="password"
+                type="password"
+                className={styles.formInput}
+              />
             </div>
             <div className={styles.formFieldContainer}>
               <Label>Confirm Password:</Label>
-              <div>
-                <Input
-                  name="confirmPassword"
-                  type="password"
-                  className={styles.formInput}
-                />
-              </div>
+              <Input
+                name="confirmPassword"
+                type="password"
+                className={styles.formInput}
+              />
             </div>
           </div>
           {registerRejected && (

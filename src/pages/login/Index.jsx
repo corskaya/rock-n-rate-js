@@ -21,23 +21,19 @@ function Login() {
           <h2 className={styles.formLabel}>User login</h2>
           <div className={styles.formFieldContainer}>
             <Label>Username or Email:</Label>
-            <div>
-              <Input
-                name="usernameOrEmail"
-                type="text"
-                className={styles.formInput}
-              />
-            </div>
+            <Input
+              name="usernameOrEmail"
+              type="text"
+              className={styles.formInput}
+            />
           </div>
           <div className={styles.formFieldContainer}>
             <Label>Password:</Label>
-            <div>
-              <Input
-                name="password"
-                type="password"
-                className={styles.formInput}
-              />
-            </div>
+            <Input
+              name="password"
+              type="password"
+              className={styles.formInput}
+            />
           </div>
           {loginRejected && (
             <div className={styles.errorMessageContainer}>

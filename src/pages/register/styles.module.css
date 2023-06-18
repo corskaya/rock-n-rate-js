@@ -1,6 +1,7 @@
 .container {
   display: flex;
   justify-content: center;
+  padding: 16px 0;
 }
 
 .innerContainer {
@@ -17,7 +18,6 @@
   color: #6ac045;
   margin-bottom: 36px;
   padding: 0;
-  margin: 0 0 40px 0;
 }
 
 .formFields {
@@ -33,6 +33,7 @@
 
 .formInput {
   width: 100%;
+  margin-top: 6px;
 }
 
 .errorMessageContainer {

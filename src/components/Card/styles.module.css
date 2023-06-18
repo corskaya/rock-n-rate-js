@@ -64,15 +64,9 @@
 }
 
 .detailsBtn {
-  color: #fff;
-  background-color: #6ac045;
   width: 128px;
   transform: translate(0%, 50%);
   transition: 0.4s ease;
-}
-
-.detailsBtn:hover {
-  background-color: #55a334;
 }
 
 .cardContainer:hover .imageContainer {

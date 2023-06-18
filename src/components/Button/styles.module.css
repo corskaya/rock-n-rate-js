@@ -1,5 +1,5 @@
 .button {
-  background-color: #559b37;
+  background-color: #6ac045;
   height: 38px;
   font-size: 1em;
   font-weight: 600;
@@ -12,5 +12,5 @@
 .button:hover {
   cursor: pointer;
   transition: 0.5s;
-  background-color: #48832f;
+  background-color: #55a334;
 }

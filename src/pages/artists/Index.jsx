@@ -16,13 +16,15 @@ function Artists() {
   return (
     <div className={styles.container}>
       <Filter />
-      {artistsPending && (
-        <div>
-          <Loading />
-        </div>
-      )}
-      {artistsFulfilled && <List artists={artists} />}
-      {artistsRejected && <Message>{errorMessage}</Message>}
+      <div className={styles.listContainer}>
+        {artistsPending && (
+          <div>
+            <Loading />
+          </div>
+        )}
+        {artistsFulfilled && <List artists={artists} />}
+        {artistsRejected && <Message>{errorMessage}</Message>}
+      </div>
     </div>
   );
 }
