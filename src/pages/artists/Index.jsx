@@ -1,8 +1,6 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Loading, Message } from "../../components";
 import styles from "./styles.module.css";
-import { useEffect } from "react";
-import { getArtists } from "./slice";
 import Filter from "./components/Filter";
 import List from "./components/List";
 
@@ -14,11 +12,6 @@ function Artists() {
     artists,
     errorMessage,
   } = useSelector((state) => state.artists);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getArtists());
-  }, [dispatch]);
 
   return (
     <div className={styles.container}>

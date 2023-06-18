@@ -5,15 +5,26 @@ const initialState = {
   artistsPending: false,
   artistsFulfilled: false,
   artistsRejected: false,
-  artists: [],
   errorMessage: null,
+  artists: [],
+  artistsCount: 0,
+  pageCount: 0,
+  page: 1,
+  filters: {
+    searchTerm: "",
+    genre: "All",
+    subGenre: "All",
+    rating: 0,
+    year: "All",
+    orderBy: "Latest",
+  },
 };
 
 export const getArtists = createAsyncThunk(
   "artists/getArtists",
-  async (query, thunkAPI) => {
+  async (filters, thunkAPI) => {
     try {
-      const { data, status } = await get("/artist");
+      const { data, status } = await get("/artist", filters);
 
       if (status !== 200) {
         return thunkAPI.rejectWithValue(data);
@@ -28,10 +39,14 @@ export const getArtists = createAsyncThunk(
   }
 );
 
-const artists = createSlice({
-  name: "artists",
+const artistsReducer = createSlice({
+  name: "artistsReducer",
   initialState,
-  reducers: {},
+  reducers: {
+    setFilters: (state, action) => {
+      state.filters = { ...state.filters, ...action.payload };
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getArtists.pending, (state) => {
@@ -42,7 +57,9 @@ const artists = createSlice({
         state.artistsPending = false;
         state.artistsRejected = false;
         state.artistsFulfilled = true;
-        state.artists = payload;
+        state.artists = payload.artists;
+        state.artistsCount = payload.count;
+        state.pageCount = payload.pageCount;
       })
       .addCase(getArtists.rejected, (state, { payload }) => {
         state.artistsPending = false;
@@ -52,4 +69,6 @@ const artists = createSlice({
   },
 });
 
-export default artists.reducer;
+export const { setFilters } = artistsReducer.actions;
+
+export default artistsReducer.reducer;
