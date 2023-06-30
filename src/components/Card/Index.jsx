@@ -3,6 +3,10 @@ import styles from "./styles.module.css";
 import { StarFilled } from "@ant-design/icons";
 
 function Card({ imageUrl, rating, genre, subGenres = [] }) {
+  const shortenLabel = (label) => {
+    return label.length > 12 ? `${label.substring(0, 11)}...` : label;
+  };
+
   return (
     <div className={styles.cardContainer}>
       <div className={styles.imageContainer}>
@@ -13,8 +17,8 @@ function Card({ imageUrl, rating, genre, subGenres = [] }) {
             <div className={styles.rating}>{`${rating} / 10`}</div>
           </div>
           <div className={styles.genreContainer}>
-            <div className={styles.genre}>{genre}</div>
-            <div className={styles.genre}>{subGenres[0]}</div>
+            <div className={styles.genre}>{shortenLabel(genre)}</div>
+            <div className={styles.genre}>{shortenLabel(subGenres[0])}</div>
           </div>
           <Button className={styles.detailsBtn}>View Details</Button>
         </div>

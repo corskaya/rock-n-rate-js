@@ -13,9 +13,19 @@
 
 .listContainer {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
   width: 100%;
   background-color: #1d1d1d;
+  padding-bottom: 24px;
+}
+
+.listHeader {
+  margin: 16px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #6ac045;
 }
 
 .labelLarge {
@@ -62,12 +72,13 @@
 }
 
 .cardsContainer {
-  margin-top: 60px;
+  margin-top: 40px;
   width: 1100px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-column-gap: 50px;
   grid-row-gap: 16px;
+  padding-bottom: 18px;
 }
 
 .cardContainer {
@@ -84,4 +95,35 @@
 
 .cardLabel:hover {
   color: #919191;
+}
+
+.paginateContainer {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.paginateBtn {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #1d1d1d;
+  border: 1px solid #363636;
+  border-radius: 4px;
+  padding: 12px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.paginateBtnActive {
+  background-color: #5da93c;
+}
+
+.paginateBtn:hover {
+  background-color: #5da93c;
+}
+
+.paginateBtnNotClickable:hover {
+  cursor: default;
+  background-color: #1d1d1d;
 }

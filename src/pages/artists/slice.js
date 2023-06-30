@@ -46,12 +46,18 @@ const artistsReducer = createSlice({
     setFilters: (state, action) => {
       state.filters = { ...state.filters, ...action.payload };
     },
+    goToPage: (state, action) => {
+      state.page = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(getArtists.pending, (state) => {
         state.artistsPending = true;
         state.artistsRejected = false;
+        state.artists = [];
+        state.artistsCount = 0;
+        state.pageCount = 0;
       })
       .addCase(getArtists.fulfilled, (state, { payload }) => {
         state.artistsPending = false;
@@ -69,6 +75,6 @@ const artistsReducer = createSlice({
   },
 });
 
-export const { setFilters } = artistsReducer.actions;
+export const { setFilters, goToPage } = artistsReducer.actions;
 
 export default artistsReducer.reducer;

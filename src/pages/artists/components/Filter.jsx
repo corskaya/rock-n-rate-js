@@ -3,24 +3,22 @@ import genres from "../../../constants/genres";
 import subGenres from "../../../constants/subGenres";
 import styles from "../styles.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilters, getArtists } from "../slice";
+import { setFilters, getArtists, goToPage } from "../slice";
 import { useEffect } from "react";
 
 function Filter() {
-  const {
-    // page,
-    filters,
-  } = useSelector((state) => state.artists);
+  const { filters, page } = useSelector((state) => state.artists);
   const dispatch = useDispatch();
 
   const onSearch = () => {
+    dispatch(goToPage(1));
     dispatch(getArtists(filters));
   };
 
   useEffect(() => {
-    dispatch(getArtists(filters));
+    dispatch(getArtists({ ...filters, page }));
     // eslint-disable-next-line
-  }, [dispatch]);
+  }, [dispatch, page]);
 
   return (
     <Form className={styles.formContainer} onFinish={onSearch}>
