@@ -127,3 +127,24 @@
   cursor: default;
   background-color: #1d1d1d;
 }
+
+.clearFiltersBtn {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding-top: 30px;
+  color: #5da93c;
+}
+
+.clearFilterIcon {
+  font-size: 14px;
+}
+
+.clearFilterText {
+  font-size: 15px;
+}
+
+.clearFiltersBtn:hover {
+  cursor: pointer;
+  color: #fff;
+}

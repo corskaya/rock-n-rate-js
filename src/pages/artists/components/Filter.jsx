@@ -4,15 +4,38 @@ import subGenres from "../../../constants/subGenres";
 import styles from "../styles.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilters, getArtists, goToPage } from "../slice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { CloseOutlined } from "@ant-design/icons";
 
 function Filter() {
   const { filters, page } = useSelector((state) => state.artists);
+  const [isFiltered, setIsFiltered] = useState(false);
   const dispatch = useDispatch();
+  const defaultFilters = {
+    searchTerm: "",
+    genre: "All",
+    subGenre: "All",
+    rating: 0,
+    year: "All",
+    orderBy: "Latest",
+  };
 
   const onSearch = () => {
     dispatch(goToPage(1));
     dispatch(getArtists(filters));
+
+    if (JSON.stringify(defaultFilters) !== JSON.stringify(filters)) {
+      setIsFiltered(true);
+    } else {
+      setIsFiltered(false);
+    }
+  };
+
+  const onClearFilters = () => {
+    setIsFiltered(false);
+    dispatch(goToPage(1));
+    dispatch(setFilters(defaultFilters));
+    dispatch(getArtists(defaultFilters));
   };
 
   useEffect(() => {
@@ -115,6 +138,12 @@ function Filter() {
             onChange={(e) => dispatch(setFilters({ orderBy: e.target.value }))}
           />
         </div>
+        {isFiltered && (
+          <div className={styles.clearFiltersBtn} onClick={onClearFilters}>
+            <CloseOutlined className={styles.clearFilterIcon} />
+            <div className={styles.clearFilterText}>Clear filters</div>
+          </div>
+        )}
       </div>
     </Form>
   );
