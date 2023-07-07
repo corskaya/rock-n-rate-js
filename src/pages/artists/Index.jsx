@@ -25,6 +25,9 @@ function Artists() {
           </div>
         )}
         {artistsFulfilled && <Paginate />}
+        {artistsFulfilled && artists.length === 0 && !artistsPending && (
+          <Message>No artist found</Message>
+        )}
         {artistsFulfilled && <List artists={artists} />}
         {artistsFulfilled && <Paginate />}
         {artistsRejected && <Message>{errorMessage}</Message>}

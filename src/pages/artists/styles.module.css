@@ -131,13 +131,14 @@
 .clearFiltersBtn {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 3px;
   padding-top: 30px;
   color: #5da93c;
+  transition: 0.5s;
 }
 
 .clearFilterIcon {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .clearFilterText {
@@ -146,5 +147,5 @@
 
 .clearFiltersBtn:hover {
   cursor: pointer;
-  color: #fff;
+  color: #f1ffff;
 }

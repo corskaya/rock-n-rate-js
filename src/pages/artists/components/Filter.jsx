@@ -23,12 +23,7 @@ function Filter() {
   const onSearch = () => {
     dispatch(goToPage(1));
     dispatch(getArtists(filters));
-
-    if (JSON.stringify(defaultFilters) !== JSON.stringify(filters)) {
-      setIsFiltered(true);
-    } else {
-      setIsFiltered(false);
-    }
+    setIsFiltered(JSON.stringify(defaultFilters) !== JSON.stringify(filters));
   };
 
   const onClearFilters = () => {
@@ -40,6 +35,7 @@ function Filter() {
 
   useEffect(() => {
     dispatch(getArtists({ ...filters, page }));
+    setIsFiltered(JSON.stringify(defaultFilters) !== JSON.stringify(filters));
     // eslint-disable-next-line
   }, [dispatch, page]);
 
