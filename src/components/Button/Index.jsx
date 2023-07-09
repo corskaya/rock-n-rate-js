@@ -1,8 +1,13 @@
 import styles from "./styles.module.css";
 
-function Button({ children, className, ...rest }) {
+function Button({ children, className, color = "Success", ...rest }) {
   return (
-    <button className={`${styles.button} ${className}`} {...rest}>
+    <button
+      className={`${styles.button} ${
+        color === "Info" ? styles.infoColor : ""
+      } ${className}`}
+      {...rest}
+    >
       {children}
     </button>
   );

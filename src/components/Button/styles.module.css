@@ -14,3 +14,11 @@
   transition: 0.5s;
   background-color: #55a334;
 }
+
+.infoColor {
+  background-color: #0aad9e;
+}
+
+.infoColor:hover {
+  background-color: #089688;
+}

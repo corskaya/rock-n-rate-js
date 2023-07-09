@@ -5,13 +5,14 @@ import styles from "./Layout.module.css";
 import { useLocation } from "react-router-dom";
 
 function Layout() {
-  const routesWithBackgroundImage = ["/", "/login", "/register"];
-  const location = useLocation();
+  const routesWithBackgroundImage = ["", "login", "register", "artist"];
+  const { pathname } = useLocation();
+  const pageName = pathname.split("/")[1];
 
   return (
     <div
       className={
-        routesWithBackgroundImage.includes(location.pathname)
+        routesWithBackgroundImage.includes(pageName)
           ? styles.layoutContainer
           : ""
       }

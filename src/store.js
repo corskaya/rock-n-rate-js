@@ -2,12 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import loginReducer, { setLoginStatus } from "./pages/login/slice";
 import registerReducer from "./pages/register/slice";
 import artistsReducer from "./pages/artists/slice";
+import artistReducer from "./pages/artist/slice";
 
 const store = configureStore({
   reducer: {
     login: loginReducer,
     register: registerReducer,
     artists: artistsReducer,
+    artist: artistReducer,
   },
 });
 

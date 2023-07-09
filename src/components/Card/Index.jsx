@@ -14,7 +14,9 @@ function Card({ imageUrl, rating, genre, subGenres = [] }) {
         <div className={styles.overlay}>
           <div className={styles.ratingContainer}>
             <StarFilled className={styles.ratingIcon} />
-            <div className={styles.rating}>{`${rating} / 10`}</div>
+            <div className={styles.rating}>{`${
+              rating !== 0 ? rating : "?"
+            } / 10`}</div>
           </div>
           <div className={styles.genreContainer}>
             <div className={styles.genre}>{shortenLabel(genre)}</div>

@@ -87,13 +87,21 @@
   gap: 4px;
 }
 
+.cardLabelLink {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.3s;
+}
+
 .cardLabel {
   cursor: pointer;
   color: #fff;
   transition: 0.3s;
 }
 
-.cardLabel:hover {
+.cardLabelLink:hover > .cardLabel {
   color: #919191;
 }
 

@@ -12,6 +12,7 @@ import {
   Contact,
   ForgotPassword,
   User,
+  Artist,
 } from "./pages";
 import { Layout, AppContent } from "./layouts";
 import { Loading } from "./components";
@@ -47,6 +48,7 @@ function Router() {
         <Route path="/songs" element={renderPage(<Songs />)} />
         <Route path="/contact" element={renderPage(<Contact />)} />
         <Route path="/user/:username" element={renderPage(<User />)} />
+        <Route path="/artist/:id" element={renderPage(<Artist />)} />
         <Route path="*" element={renderPage(<NotFound />)} />
       </Route>
     </Routes>

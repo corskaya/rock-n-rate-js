@@ -12,3 +12,4 @@ export const ForgotPassword = React.lazy(() =>
   import("./forgotPassword/Index")
 );
 export const User = React.lazy(() => import("./user/Index"));
+export const Artist = React.lazy(() => import("./artist/Index"));
