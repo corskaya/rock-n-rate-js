@@ -11,8 +11,7 @@ function List({ artists }) {
             <Card
               imageUrl={artist.image}
               rating={artist.rating}
-              genre={artist.genre}
-              subGenres={artist.subGenres}
+              genres={artist.genres}
             />
           </Link>
           <Link to={`/artist/${artist._id}`} className={styles.cardLabelLink}>

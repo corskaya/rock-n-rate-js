@@ -13,7 +13,6 @@ const initialState = {
   filters: {
     searchTerm: "",
     genre: "All",
-    subGenre: "All",
     rating: 0,
     year: "All",
     orderBy: "Latest",

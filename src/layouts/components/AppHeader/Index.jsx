@@ -48,7 +48,7 @@ function AppHeader() {
             <img className={styles.logo} src={logo} alt="Logo" />
           </Link>
           <h4 className={styles.description}>
-            Rate your artist, album and song.
+            Rate your song, album and artist.
           </h4>
         </div>
         <div className={styles.rightPart}>

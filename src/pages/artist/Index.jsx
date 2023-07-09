@@ -41,7 +41,7 @@ function Artist() {
           <div className={styles.infoContainer}>
             <h1 className={styles.artistName}>{artist.name}</h1>
             <h3 className={styles.foundationYear}>{artist.foundationYear}</h3>
-            <h3 className={styles.subGenres}>{artist.subGenres.join(" / ")}</h3>
+            <h3 className={styles.genres}>{artist.genres.join(" / ")}</h3>
             <div className={styles.ratingContainer}>
               <StarFilled className={styles.ratingIcon} />
               <div className={styles.ratingText}>{`${

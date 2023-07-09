@@ -1,6 +1,5 @@
 import { Button, Form, Input, Label, Select } from "../../../components";
 import genres from "../../../constants/genres";
-import subGenres from "../../../constants/subGenres";
 import styles from "../styles.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilters, getArtists, goToPage } from "../slice";
@@ -14,7 +13,6 @@ function Filter() {
   const defaultFilters = {
     searchTerm: "",
     genre: "All",
-    subGenre: "All",
     rating: 0,
     year: "All",
     orderBy: "Latest",
@@ -58,29 +56,17 @@ function Filter() {
           <Label className={styles.labelSmall}>Genre:</Label>
           <Select
             value={filters.genre}
-            options={Object.keys(genres).map((key) => ({
-              label: genres[key],
-              value: genres[key],
+            options={genres.map((genre) => ({
+              label: genre,
+              value: genre,
             }))}
             onChange={(e) => {
               dispatch(
                 setFilters({
                   genre: e.target.value,
-                  subGenre: subGenres[e.target.value][0],
                 })
               );
             }}
-          />
-        </div>
-        <div className={styles.selectContainer}>
-          <Label className={styles.labelSmall}>Sub Genre:</Label>
-          <Select
-            value={filters.subGenre}
-            options={subGenres[filters.genre].map((subGenre) => ({
-              label: subGenre,
-              value: subGenre,
-            }))}
-            onChange={(e) => dispatch(setFilters({ subGenre: e.target.value }))}
           />
         </div>
         <div className={styles.selectContainer}>
