@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 import { useEffect } from "react";
 import { getArtist, getSimilarArtists } from "./slice";
 import { StarFilled } from "@ant-design/icons";
-import { Card, Button } from "../../components";
+import { Tooltip, Button } from "../../components";
 
 function Artist() {
   const { id } = useParams();
@@ -67,16 +67,18 @@ function Artist() {
               <div className={styles.suggestions}>
                 {similarArtists.map((artist) => (
                   <Link to={`/artist/${artist._id}`}>
-                    <div
-                      key={artist._id}
-                      className={styles.suggestionImageContainer}
-                    >
-                      <img
-                        src={artist.image}
-                        alt={artist.name}
-                        className={styles.suggestionImage}
-                      />
-                    </div>
+                    <Tooltip content={artist.name}>
+                      <div
+                        key={artist._id}
+                        className={styles.suggestionImageContainer}
+                      >
+                        <img
+                          src={artist.image}
+                          alt={artist.name}
+                          className={styles.suggestionImage}
+                        />
+                      </div>
+                    </Tooltip>
                   </Link>
                 ))}
               </div>

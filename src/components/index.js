@@ -6,3 +6,4 @@ export { default as Message } from "./Message/Index";
 export { default as Loading } from "./Loading/Index";
 export { default as Card } from "./Card/Index";
 export { default as Select } from "./Select/Index";
+export { default as Tooltip } from "./Tooltip/Index";
