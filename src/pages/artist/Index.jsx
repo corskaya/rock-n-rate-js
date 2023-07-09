@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styles from "./styles.module.css";
 import { useEffect } from "react";
-import { getArtist } from "./slice";
+import { getArtist, getSimilarArtists } from "./slice";
 import { StarFilled } from "@ant-design/icons";
-import Button from "../../components/Button/Index";
+import { Card, Button } from "../../components";
 
 function Artist() {
   const { id } = useParams();
@@ -14,11 +14,14 @@ function Artist() {
     artistFulfilled,
     artist,
     // errorMessage,
+    similarArtistsFulfilled,
+    similarArtists,
   } = useSelector((state) => state.artist);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getArtist(id));
+    dispatch(getSimilarArtists(id));
   }, [dispatch, id]);
 
   return (
@@ -39,9 +42,15 @@ function Artist() {
             </Button>
           </div>
           <div className={styles.infoContainer}>
-            <h1 className={styles.artistName}>{artist.name}</h1>
-            <h3 className={styles.foundationYear}>{artist.foundationYear}</h3>
-            <h3 className={styles.genres}>{artist.genres.join(" / ")}</h3>
+            <h1 className={`${styles.artistName} ${styles.textShadow}`}>
+              {artist.name}
+            </h1>
+            <h3 className={`${styles.foundationYear} ${styles.textShadow}`}>
+              {artist.foundationYear}
+            </h3>
+            <h3 className={`${styles.genres} ${styles.textShadow}`}>
+              {artist.genres.join(" / ")}
+            </h3>
             <div className={styles.ratingContainer}>
               <StarFilled className={styles.ratingIcon} />
               <div className={styles.ratingText}>{`${
@@ -50,7 +59,29 @@ function Artist() {
             </div>
             <p className={styles.aboutText}>{artist.about}</p>
           </div>
-          <div className={styles.suggestionsContainer}>similar artists</div>
+          <div className={styles.suggestionsContainer}>
+            <h4 className={`${styles.suggestionsText} ${styles.textShadow}`}>
+              Similar Artists
+            </h4>
+            {similarArtistsFulfilled && (
+              <div className={styles.suggestions}>
+                {similarArtists.map((artist) => (
+                  <Link to={`/artist/${artist._id}`}>
+                    <div
+                      key={artist._id}
+                      className={styles.suggestionImageContainer}
+                    >
+                      <img
+                        src={artist.image}
+                        alt={artist.name}
+                        className={styles.suggestionImage}
+                      />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>

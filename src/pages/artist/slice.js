@@ -6,7 +6,12 @@ const initialState = {
   artistFulfilled: false,
   artistRejected: false,
   artist: {},
-  errorMessage: null,
+  artistErrorMessage: null,
+  similarArtistsPending: false,
+  similarArtistsFulfilled: false,
+  similarArtistsRejected: false,
+  similarArtists: [],
+  similarArtistsErrorMessage: null,
 };
 
 export const getArtist = createAsyncThunk(
@@ -14,6 +19,25 @@ export const getArtist = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const { data, status } = await get(`/artist/${id}`);
+
+      if (status !== 200) {
+        return thunkAPI.rejectWithValue(data);
+      }
+
+      return data;
+    } catch (e) {
+      return e.response
+        ? thunkAPI.rejectWithValue(e.response.data)
+        : thunkAPI.rejectWithValue(e);
+    }
+  }
+);
+
+export const getSimilarArtists = createAsyncThunk(
+  "artists/getSimilarArtists",
+  async (id, thunkAPI) => {
+    try {
+      const { data, status } = await get(`/artist/similarArtists/${id}`);
 
       if (status !== 200) {
         return thunkAPI.rejectWithValue(data);
@@ -47,7 +71,22 @@ const artistReducer = createSlice({
       .addCase(getArtist.rejected, (state, { payload }) => {
         state.artistPending = false;
         state.artistRejected = true;
-        state.errorMessage = payload.message;
+        state.artistErrorMessage = payload.message;
+      })
+      .addCase(getSimilarArtists.pending, (state) => {
+        state.similarArtistsPending = true;
+        state.similarArtistsRejected = false;
+      })
+      .addCase(getSimilarArtists.fulfilled, (state, { payload }) => {
+        state.similarArtistsPending = false;
+        state.similarArtistsRejected = false;
+        state.similarArtistsFulfilled = true;
+        state.similarArtists = payload.similarArtists;
+      })
+      .addCase(getSimilarArtists.rejected, (state, { payload }) => {
+        state.similarArtistsPending = false;
+        state.similarArtistsRejected = true;
+        state.similarArtistsErrorMessage = payload.message;
       });
   },
 });
