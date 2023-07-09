@@ -18,7 +18,7 @@ function Artists() {
     <div className={styles.container}>
       <Filter />
       <div className={styles.listContainer}>
-        <h3 className={styles.listHeader}>Music Ratings Artists</h3>
+        <h3 className={styles.listHeader}>Rock'n Rate Artists</h3>
         {artistsPending && (
           <div>
             <Loading />

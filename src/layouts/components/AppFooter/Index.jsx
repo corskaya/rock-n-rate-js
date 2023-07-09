@@ -5,7 +5,7 @@ function AppFooter() {
   return (
     <div className={styles.footerFix}>
       <div className={styles.footerContainer}>
-        <div>Music Ratings © - 2023</div>
+        <div>Rock'n Rate © - 2023</div>
         <div className={styles.separator}>-</div>
         <Link className={styles.footerLink} to="/contact">
           Contact
