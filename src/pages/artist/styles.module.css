@@ -64,21 +64,59 @@
   font-weight: 500;
 }
 
-.ratingContainer {
+.ratingsContainer {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: 32px;
+  margin-bottom: 36px;
 }
 
-.ratingIcon {
-  font-size: 26px;
-  color: #6ac045;
+.ratingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
 }
 
 .ratingText {
+  padding: 0;
+  margin: 0;
+  font-weight: 700;
+  color: #e9e9e9;
+  letter-spacing: 0.02em;
+}
+
+.ratingIcon {
+  font-size: 24px;
+  color: #6ac045;
+}
+
+.userRatingIcon {
+  font-size: 24px;
+  color: #0aad9e;
+}
+
+.ratingPointContainer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.ratingPointContainer:hover {
+  cursor: pointer;
+  background-color: #636363;
+}
+
+.ratingPoint {
   font-size: 20px;
   font-weight: 600;
+}
+
+.ratingMax {
+  font-size: 16px;
+  padding-top: 2px;
 }
 
 .aboutText {
