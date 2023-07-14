@@ -1,7 +1,8 @@
-import { Label } from "../../../components";
+import { Label, Modal } from "../../../components";
 import { StarFilled } from "@ant-design/icons";
 import styles from "../styles.module.css";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 function Info() {
   const {
@@ -13,6 +14,7 @@ function Info() {
     // similarArtistsFulfilled,
     // similarArtists,
   } = useSelector((state) => state.artist);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className={styles.infoContainer}>
@@ -40,7 +42,10 @@ function Info() {
             </div>
           </div>
         </div>
-        <div className={styles.ratingContainer}>
+        <div
+          className={styles.ratingContainer}
+          onClick={() => setShowModal(true)}
+        >
           <Label className={`${styles.ratingText} ${styles.textShadow}`}>
             YOUR RATING
           </Label>
@@ -54,6 +59,13 @@ function Info() {
         </div>
       </div>
       <p className={styles.aboutText}>{artist.about}</p>
+      <Modal
+        show={showModal}
+        onClose={() => setShowModal(false)}
+        title="My Modal"
+      >
+        <p>This is the content of the modal.</p>
+      </Modal>
     </div>
   );
 }
