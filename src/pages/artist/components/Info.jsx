@@ -43,15 +43,15 @@ function Info() {
             </div>
           </div>
         </div>
-        <div
-          className={styles.ratingContainer}
-          onClick={() => setShowRateModal(true)}
-        >
+        <div className={styles.ratingContainer}>
           <Label className={`${styles.ratingText} ${styles.textShadow}`}>
             YOUR RATING
           </Label>
           <div>
-            <div className={styles.ratingPointContainer}>
+            <div
+              className={styles.ratingPointContainer}
+              onClick={() => setShowRateModal(true)}
+            >
               <StarFilled className={styles.userRatingIcon} />
               <div className={styles.ratingPoint}>8</div>
               <div className={styles.ratingMax}>/ 10</div>
@@ -60,13 +60,11 @@ function Info() {
         </div>
       </div>
       <p className={styles.aboutText}>{artist.about}</p>
-      {showRateModal && (
-        <RateModal
-          show={showRateModal}
-          onClose={() => setShowRateModal(false)}
-          artist={artist}
-        />
-      )}
+      <RateModal
+        show={showRateModal}
+        onClose={() => setShowRateModal(false)}
+        artist={artist}
+      />
     </div>
   );
 }

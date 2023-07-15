@@ -190,7 +190,7 @@
   padding: 16px;
   border-radius: 4px;
   width: 520px;
-  min-height: 230px;
+  min-height: 220px;
   z-index: 999;
   cursor: auto;
 }
@@ -210,25 +210,55 @@
 }
 
 .rateModalBody {
-  position: relative;
+  /* position: relative; */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.rateModalRatingIconContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 120px;
+}
+
 .rateModalRatingIcon {
-  font-size: 120px;
   color: #0aad9e;
-  margin-bottom: 6px;
+  transition: 0.2s ease-out;
 }
 
 .rateModalRatingText {
-  font-size: 28px;
-  font-weight: 500;
   position: absolute;
-  top: 12%;
+  top: 22.6%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -140%);
+  font-weight: 500;
+  user-select: none;
+  transition: 0.2s ease-out;
+}
+
+.rateModalCloseBtnContainer {
+  position: absolute;
+  top: -44px;
+  right: 0;
+}
+
+.rateModalCloseBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.rateModalCloseBtn:hover {
+  background-color: rgba(255, 255, 2555, 0.1);
 }
 
 .rateModalRateThisText {
