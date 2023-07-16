@@ -50,7 +50,7 @@ function Login() {
               </Link>
             </div>
             <Button type="submit">
-              {loginPending ? <Loading /> : "Login"}
+              {loginPending ? <Loading size="S" /> : "Login"}
             </Button>
           </div>
         </Form>

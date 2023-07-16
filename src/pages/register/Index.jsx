@@ -56,7 +56,7 @@ function Register() {
               Already have an account?
             </Link>
             <Button type="submit">
-              {registerPending ? <Loading /> : "Register"}
+              {registerPending ? <Loading size="S" /> : "Register"}
             </Button>
           </div>
         </Form>
