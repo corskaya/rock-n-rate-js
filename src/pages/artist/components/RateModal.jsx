@@ -1,9 +1,18 @@
 import { CloseOutlined, StarFilled, StarOutlined } from "@ant-design/icons";
 import styles from "../styles.module.css";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { rateArtist, removeRating } from "../slice";
+import { Loading } from "../../../components";
 
 function RateModal({ show, onClose, artist }) {
   const points = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const rateArtistPending = useSelector(
+    (state) => state.artist.rateArtistPending
+  );
+  const removeRatingPending = useSelector(
+    (state) => state.artist.removeRatingPending
+  );
   const [hoveredPoint, setHoveredPoint] = useState(
     artist.ratingOfRelevantUser ?? 0
   );
@@ -12,6 +21,7 @@ function RateModal({ show, onClose, artist }) {
   );
   const [starSize, setStarSize] = useState(60);
   const [starTextSize, setStarTextSize] = useState(22);
+  const dispatch = useDispatch();
 
   const handlePointHover = (point) => {
     setHoveredPoint(point);
@@ -27,6 +37,17 @@ function RateModal({ show, onClose, artist }) {
 
   const handleSelectPoint = (point) => {
     setSelectedPoint(point);
+  };
+
+  const handleRateArtist = () => {
+    if (selectedPoint <= 0 || selectedPoint === artist.ratingOfRelevantUser) {
+      return;
+    }
+    dispatch(rateArtist({ id: artist._id, rating: selectedPoint }));
+  };
+
+  const handleRemoveRating = () => {
+    dispatch(removeRating(artist._id));
   };
 
   useEffect(() => {
@@ -65,6 +86,7 @@ function RateModal({ show, onClose, artist }) {
                 {points.map((point) => {
                   return point > hoveredPoint ? (
                     <StarOutlined
+                      key={point}
                       className={`${styles.rateModalStar} ${styles.rateModalStarPassive}`}
                       onMouseEnter={() => handlePointHover(point)}
                       onMouseLeave={handlePointLeave}
@@ -72,6 +94,7 @@ function RateModal({ show, onClose, artist }) {
                     />
                   ) : (
                     <StarFilled
+                      key={point}
                       className={`${styles.rateModalStar} ${styles.rateModalStarActive}`}
                       onMouseEnter={() => handlePointHover(point)}
                       onMouseLeave={handlePointLeave}
@@ -94,8 +117,9 @@ function RateModal({ show, onClose, artist }) {
                     ? styles.rateModalBtnActive
                     : styles.rateModalBtnPassive
                 }`}
+                onClick={handleRateArtist}
               >
-                Rate
+                {rateArtistPending ? <Loading size="S" /> : "Rate"}
               </button>
 
               <button
@@ -109,8 +133,9 @@ function RateModal({ show, onClose, artist }) {
                     artist.ratingOfRelevantUser ? "visible" : "hidden"
                   }`,
                 }}
+                onClick={handleRemoveRating}
               >
-                Remove rating
+                {removeRatingPending ? <Loading size="S" /> : "Remove rating"}
               </button>
             </div>
           </div>

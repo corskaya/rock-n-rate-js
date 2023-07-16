@@ -1,13 +1,14 @@
 import { Label } from "../../../components";
 import { StarFilled } from "@ant-design/icons";
 import styles from "../styles.module.css";
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import RateModal from "./RateModal";
+import { setShowRateModal } from "../slice";
 
 function Info() {
   const artist = useSelector((state) => state.artist.artist);
-  const [showRateModal, setShowRateModal] = useState(false);
+  const showRateModal = useSelector((state) => state.artist.showRateModal);
+  const dispatch = useDispatch();
 
   return (
     <div className={styles.infoContainer}>
@@ -42,7 +43,7 @@ function Info() {
           <div>
             <div
               className={styles.ratingPointContainer}
-              onClick={() => setShowRateModal(true)}
+              onClick={() => dispatch(setShowRateModal(true))}
             >
               <StarFilled className={styles.userRatingIcon} />
               <div className={styles.ratingPoint}>
@@ -56,7 +57,7 @@ function Info() {
       <p className={styles.aboutText}>{artist.about}</p>
       <RateModal
         show={showRateModal}
-        onClose={() => setShowRateModal(false)}
+        onClose={() => dispatch(setShowRateModal(false))}
         artist={artist}
       />
     </div>
