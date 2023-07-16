@@ -61,6 +61,7 @@ const artistReducer = createSlice({
       .addCase(getArtist.pending, (state) => {
         state.artistPending = true;
         state.artistRejected = false;
+        state.artistFulfilled = false;
       })
       .addCase(getArtist.fulfilled, (state, { payload }) => {
         state.artistPending = false;
@@ -76,6 +77,7 @@ const artistReducer = createSlice({
       .addCase(getSimilarArtists.pending, (state) => {
         state.similarArtistsPending = true;
         state.similarArtistsRejected = false;
+        state.similarArtists = [];
       })
       .addCase(getSimilarArtists.fulfilled, (state, { payload }) => {
         state.similarArtistsPending = false;

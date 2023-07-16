@@ -1,17 +1,15 @@
 import { useSelector } from "react-redux";
-import { Tooltip } from "../../../components";
+import { Loading, Message, Tooltip } from "../../../components";
 import styles from "../styles.module.css";
 import { Link } from "react-router-dom";
 
 function Suggestions() {
   const {
-    // artistPending,
-    // artistRejected,
-    // artistFulfilled,
-    // artist,
-    // errorMessage,
+    similarArtistsPending,
     similarArtistsFulfilled,
+    similarArtistsRejected,
     similarArtists,
+    similarArtistsErrorMessage,
   } = useSelector((state) => state.artist);
 
   return (
@@ -19,15 +17,13 @@ function Suggestions() {
       <h4 className={`${styles.suggestionsText} ${styles.textShadow}`}>
         Similar Artists
       </h4>
+      {similarArtistsPending && <Loading />}
       {similarArtistsFulfilled && (
         <div className={styles.suggestions}>
           {similarArtists.map((artist) => (
-            <Link to={`/artist/${artist._id}`}>
+            <Link to={`/artist/${artist._id}`} key={artist._id}>
               <Tooltip content={artist.name}>
-                <div
-                  key={artist._id}
-                  className={styles.suggestionImageContainer}
-                >
+                <div className={styles.suggestionImageContainer}>
                   <img
                     src={artist.image}
                     alt={artist.name}
@@ -38,6 +34,9 @@ function Suggestions() {
             </Link>
           ))}
         </div>
+      )}
+      {similarArtistsRejected && (
+        <Message>{similarArtistsErrorMessage}</Message>
       )}
     </div>
   );
