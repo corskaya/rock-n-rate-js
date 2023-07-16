@@ -1,12 +1,13 @@
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { CloseOutlined, StarFilled, StarOutlined } from "@ant-design/icons";
 import styles from "../styles.module.css";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { rateArtist, removeRating } from "../slice";
 import { Loading } from "../../../components";
 
+const points = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
 function RateModal({ show, onClose, artist }) {
-  const points = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const rateArtistPending = useSelector(
     (state) => state.artist.rateArtistPending
   );
@@ -14,10 +15,10 @@ function RateModal({ show, onClose, artist }) {
     (state) => state.artist.removeRatingPending
   );
   const [hoveredPoint, setHoveredPoint] = useState(
-    artist.ratingOfRelevantUser ?? 0
+    artist.ratingOfRelevantUser || 0
   );
   const [selectedPoint, setSelectedPoint] = useState(
-    artist.ratingOfRelevantUser ?? 0
+    artist.ratingOfRelevantUser || 0
   );
   const [starSize, setStarSize] = useState(60);
   const [starTextSize, setStarTextSize] = useState(22);
@@ -30,9 +31,9 @@ function RateModal({ show, onClose, artist }) {
   const handlePointLeave = () => {
     if (selectedPoint > 0) {
       setHoveredPoint(selectedPoint);
-      return;
+    } else {
+      setHoveredPoint(0);
     }
-    setHoveredPoint(0);
   };
 
   const handleSelectPoint = (point) => {
@@ -52,8 +53,8 @@ function RateModal({ show, onClose, artist }) {
 
   useEffect(() => {
     if (!show) {
-      setSelectedPoint(artist.ratingOfRelevantUser ?? 0);
-      setHoveredPoint(artist.ratingOfRelevantUser ?? 0);
+      setSelectedPoint(artist.ratingOfRelevantUser || 0);
+      setHoveredPoint(artist.ratingOfRelevantUser || 0);
     }
   }, [show, artist.ratingOfRelevantUser]);
 
@@ -83,8 +84,8 @@ function RateModal({ show, onClose, artist }) {
               <h3 className={styles.rateModalRateThisText}>RATE THIS</h3>
               <h3 className={styles.rateModalArtistName}>{artist.name}</h3>
               <div className={styles.rateModalStarsContainer}>
-                {points.map((point) => {
-                  return point > hoveredPoint ? (
+                {points.map((point) =>
+                  point > hoveredPoint ? (
                     <StarOutlined
                       key={point}
                       className={`${styles.rateModalStar} ${styles.rateModalStarPassive}`}
@@ -100,8 +101,8 @@ function RateModal({ show, onClose, artist }) {
                       onMouseLeave={handlePointLeave}
                       onClick={() => handleSelectPoint(point)}
                     />
-                  );
-                })}
+                  )
+                )}
               </div>
 
               <h3
