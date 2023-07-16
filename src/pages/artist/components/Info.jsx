@@ -6,15 +6,7 @@ import { useState } from "react";
 import RateModal from "./RateModal";
 
 function Info() {
-  const {
-    // artistPending,
-    // artistRejected,
-    // artistFulfilled,
-    artist,
-    // errorMessage,
-    // similarArtistsFulfilled,
-    // similarArtists,
-  } = useSelector((state) => state.artist);
+  const artist = useSelector((state) => state.artist.artist);
   const [showRateModal, setShowRateModal] = useState(false);
 
   return (
@@ -53,7 +45,9 @@ function Info() {
               onClick={() => setShowRateModal(true)}
             >
               <StarFilled className={styles.userRatingIcon} />
-              <div className={styles.ratingPoint}>8</div>
+              <div className={styles.ratingPoint}>
+                {artist.ratingOfRelevantUser ?? "?"}
+              </div>
               <div className={styles.ratingMax}>/ 10</div>
             </div>
           </div>

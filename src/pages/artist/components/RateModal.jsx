@@ -4,8 +4,12 @@ import { useEffect, useState } from "react";
 
 function RateModal({ show, onClose, artist }) {
   const points = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const [hoveredPoint, setHoveredPoint] = useState(0);
-  const [selectedPoint, setSelectedPoint] = useState(0);
+  const [hoveredPoint, setHoveredPoint] = useState(
+    artist.ratingOfRelevantUser ?? 0
+  );
+  const [selectedPoint, setSelectedPoint] = useState(
+    artist.ratingOfRelevantUser ?? 0
+  );
   const [starSize, setStarSize] = useState(60);
   const [starTextSize, setStarTextSize] = useState(22);
 
@@ -27,8 +31,8 @@ function RateModal({ show, onClose, artist }) {
 
   useEffect(() => {
     if (!show) {
-      setSelectedPoint(0);
-      setHoveredPoint(0);
+      setSelectedPoint(artist.ratingOfRelevantUser ?? 0);
+      setHoveredPoint(artist.ratingOfRelevantUser ?? 0);
     }
   }, [show]);
 
@@ -41,17 +45,20 @@ function RateModal({ show, onClose, artist }) {
     show && (
       <div className={styles.rateModalContainer}>
         <div onClick={onClose} className={styles.rateModalOverlay}></div>
-        <div className={styles.rateModalContent}>
+        <div
+          className={styles.rateModalContent}
+          style={{
+            minHeight: `${artist.ratingOfRelevantUser ? "270px" : "220px"}`,
+          }}
+        >
           <div className={styles.rateModalBodyContainer}>
             <div className={styles.rateModalBody}>
-              {/* <div> */}
               <div className={styles.rateModalRatingIconContainer}>
                 <StarFilled
                   className={styles.rateModalRatingIcon}
                   style={{ fontSize: starSize }}
                 />
               </div>
-              {/* </div> */}
               <h3 className={styles.rateModalRateThisText}>RATE THIS</h3>
               <h3 className={styles.rateModalArtistName}>{artist.name}</h3>
               <div className={styles.rateModalStarsContainer}>
@@ -82,12 +89,28 @@ function RateModal({ show, onClose, artist }) {
               </h3>
               <button
                 className={`${styles.rateModalBtn} ${
-                  selectedPoint > 0
+                  selectedPoint > 0 &&
+                  selectedPoint !== artist.ratingOfRelevantUser
                     ? styles.rateModalBtnActive
                     : styles.rateModalBtnPassive
                 }`}
               >
                 Rate
+              </button>
+
+              <button
+                className={`${styles.rateModalRemoveBtn} ${
+                  selectedPoint !== artist.ratingOfRelevantUser
+                    ? styles.rateModalRemoveBtnActive
+                    : styles.rateModalRemoveBtnPassive
+                }`}
+                style={{
+                  visibility: `${
+                    artist.ratingOfRelevantUser ? "visible" : "hidden"
+                  }`,
+                }}
+              >
+                Remove rating
               </button>
             </div>
           </div>
