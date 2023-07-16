@@ -34,7 +34,7 @@ function RateModal({ show, onClose, artist }) {
       setSelectedPoint(artist.ratingOfRelevantUser ?? 0);
       setHoveredPoint(artist.ratingOfRelevantUser ?? 0);
     }
-  }, [show]);
+  }, [show, artist.ratingOfRelevantUser]);
 
   useEffect(() => {
     setStarSize(90 + selectedPoint * 4);
