@@ -5,7 +5,13 @@ import styles from "./Layout.module.css";
 import { useLocation } from "react-router-dom";
 
 function Layout() {
-  const routesWithBackgroundImage = ["", "login", "register", "artist"];
+  const routesWithBackgroundImage = [
+    "",
+    "login",
+    "register",
+    "artist",
+    "album",
+  ];
   const { pathname } = useLocation();
   const pageName = pathname.split("/")[1];
 

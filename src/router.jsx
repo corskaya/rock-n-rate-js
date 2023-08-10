@@ -13,6 +13,7 @@ import {
   ForgotPassword,
   User,
   Artist,
+  Album,
 } from "./pages";
 import { Layout, AppContent } from "./layouts";
 import { Loading } from "./components";
@@ -49,6 +50,7 @@ function Router() {
         <Route path="/contact" element={renderPage(<Contact />)} />
         <Route path="/user/:username" element={renderPage(<User />)} />
         <Route path="/artist/:id" element={renderPage(<Artist />)} />
+        <Route path="/album/:id" element={renderPage(<Album />)} />
         <Route path="*" element={renderPage(<NotFound />)} />
       </Route>
     </Routes>

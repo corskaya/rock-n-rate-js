@@ -4,6 +4,7 @@ import registerReducer from "./pages/register/slice";
 import artistsReducer from "./pages/artists/slice";
 import artistReducer from "./pages/artist/slice";
 import albumsReducer from "./pages/albums/slice";
+import albumReducer from "./pages/album/slice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     artists: artistsReducer,
     artist: artistReducer,
     albums: albumsReducer,
+    album: albumReducer,
   },
 });
 

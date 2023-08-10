@@ -13,3 +13,4 @@ export const ForgotPassword = React.lazy(() =>
 );
 export const User = React.lazy(() => import("./user/Index"));
 export const Artist = React.lazy(() => import("./artist/Index"));
+export const Album = React.lazy(() => import("./album/Index"));
