@@ -34,6 +34,10 @@ function Filter() {
   useEffect(() => {
     dispatch(getArtists({ ...filters, page }));
     setIsFiltered(JSON.stringify(defaultFilters) !== JSON.stringify(filters));
+
+    return () => {
+      dispatch(setFilters(defaultFilters));
+    };
     // eslint-disable-next-line
   }, [dispatch, page]);
 
