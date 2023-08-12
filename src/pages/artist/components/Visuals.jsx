@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../../../components";
 import styles from "../styles.module.css";
-import { setFilters } from "../../albums/slice";
+import { setFilters as setAlbumsFilters } from "../../albums/slice";
+import { setFilters as setSongsFilters } from "../../songs/slice";
 import { useNavigate } from "react-router-dom";
 
 function Visuals() {
@@ -10,8 +11,13 @@ function Visuals() {
   const navigate = useNavigate();
 
   const handleViewAlbums = () => {
-    dispatch(setFilters({ searchTerm: artist.name }));
+    dispatch(setAlbumsFilters({ searchTerm: artist.name }));
     navigate("/albums");
+  };
+
+  const handleViewSongs = () => {
+    dispatch(setSongsFilters({ searchTerm: artist.name }));
+    navigate("/songs");
   };
 
   return (
@@ -22,7 +28,11 @@ function Visuals() {
       <Button className={styles.visualButton} onClick={handleViewAlbums}>
         View Albums
       </Button>
-      <Button className={styles.visualButton} color="Info">
+      <Button
+        className={styles.visualButton}
+        color="Info"
+        onClick={handleViewSongs}
+      >
         View Songs
       </Button>
     </div>
