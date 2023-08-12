@@ -5,6 +5,7 @@ import artistsReducer from "./pages/artists/slice";
 import artistReducer from "./pages/artist/slice";
 import albumsReducer from "./pages/albums/slice";
 import albumReducer from "./pages/album/slice";
+import songsReducer from "./pages/songs/slice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     artist: artistReducer,
     albums: albumsReducer,
     album: albumReducer,
+    songs: songsReducer,
   },
 });
 

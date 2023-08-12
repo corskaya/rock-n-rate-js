@@ -22,8 +22,8 @@ function PaginateButton({
 }
 
 function Paginate() {
-  const pageCount = useSelector((state) => state.artists.pageCount);
-  const currentPage = useSelector((state) => state.artists.page);
+  const pageCount = useSelector((state) => state.songs.pageCount);
+  const currentPage = useSelector((state) => state.songs.page);
   const dispatch = useDispatch();
   const maxVisiblePages = 7;
   const startPage = Math.max(
