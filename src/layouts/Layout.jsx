@@ -11,6 +11,7 @@ function Layout() {
     "register",
     "artist",
     "album",
+    "song",
   ];
   const { pathname } = useLocation();
   const pageName = pathname.split("/")[1];

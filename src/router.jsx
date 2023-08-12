@@ -14,6 +14,7 @@ import {
   User,
   Artist,
   Album,
+  Song,
 } from "./pages";
 import { Layout, AppContent } from "./layouts";
 import { Loading } from "./components";
@@ -51,6 +52,7 @@ function Router() {
         <Route path="/user/:username" element={renderPage(<User />)} />
         <Route path="/artist/:id" element={renderPage(<Artist />)} />
         <Route path="/album/:id" element={renderPage(<Album />)} />
+        <Route path="/song/:id" element={renderPage(<Song />)} />
         <Route path="*" element={renderPage(<NotFound />)} />
       </Route>
     </Routes>
