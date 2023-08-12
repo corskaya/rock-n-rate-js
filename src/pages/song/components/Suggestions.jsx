@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Loading, Message, Tooltip } from "../../../components";
+import { Loading, Message, SongCard, Tooltip } from "../../../components";
 import styles from "../styles.module.css";
 import { Link } from "react-router-dom";
 
@@ -21,16 +21,12 @@ function Suggestions() {
       {similarSongsFulfilled && (
         <div className={styles.suggestions}>
           {similarSongs.map((song) => (
-            <Link to={`/song/${song._id}`} key={song._id}>
-              <Tooltip content={song.name}>
-                <div className={styles.suggestionImageContainer}>
-                  <img
-                    src={song.image}
-                    alt={song.name}
-                    className={styles.suggestionImage}
-                  />
-                </div>
-              </Tooltip>
+            <Link
+              to={`/song/${song._id}`}
+              key={song._id}
+              className={styles.songCardLink}
+            >
+              <SongCard song={song} className={styles.songCard} />
             </Link>
           ))}
         </div>

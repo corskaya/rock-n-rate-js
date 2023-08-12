@@ -1,8 +1,8 @@
-import styles from "../styles.module.css";
+import styles from "./styles.module.css";
 
-function SongCard({ song }) {
+function SongCard({ className, song }) {
   return (
-    <div className={styles.songCardContainer}>
+    <div className={`${styles.songCardContainer} ${className}`}>
       <img className={styles.songCardImage} src={song.image} alt={song.name} />
       <div className={styles.songCardInfo}>
         <div className={styles.songCardName}>{song.name}</div>

@@ -143,26 +143,8 @@
 
 .suggestions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.suggestionImageContainer {
-  width: 96px;
-  height: 96px;
-  border: 4px solid #fff;
-  border-radius: 4px;
-  transition: 0.5s;
-}
-
-.suggestionImageContainer:hover {
-  border-color: #6ac045;
-  cursor: pointer;
-}
-
-.suggestionImage {
-  width: 100%;
-  height: 100%;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .rateModalContainer,
@@ -331,4 +313,13 @@
 .rateModalRemoveBtn:hover {
   background-color: #242930;
   cursor: pointer;
+}
+
+.songCardLink {
+  text-decoration: none;
+}
+
+.songCard {
+  width: 240px;
+  border: none;
 }

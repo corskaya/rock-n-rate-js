@@ -8,3 +8,4 @@ export { default as Card } from "./Card/Index";
 export { default as Select } from "./Select/Index";
 export { default as Tooltip } from "./Tooltip/Index";
 export { default as Modal } from "./Modal/Index";
+export { default as SongCard } from "./SongCard/Index";

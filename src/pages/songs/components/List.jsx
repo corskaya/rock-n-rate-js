@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "../styles.module.css";
-import SongCard from "./SongCard";
+import { SongCard } from "../../../components";
 
 function List({ songs }) {
   return (
