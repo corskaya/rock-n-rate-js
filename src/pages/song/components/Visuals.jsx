@@ -11,6 +11,10 @@ function Visuals() {
     navigate(`/artist/${artistId}`);
   };
 
+  const handleViewAlbum = (albumId) => {
+    navigate(`/album/${albumId}`);
+  };
+
   return (
     <div className={styles.visualsContainer}>
       <div className={styles.imageContainer}>
@@ -22,7 +26,11 @@ function Visuals() {
       >
         View Artist
       </Button>
-      <Button className={styles.visualButton} color="Info">
+      <Button
+        className={styles.visualButton}
+        color="Info"
+        onClick={() => handleViewAlbum(song.albumRefObjectId)}
+      >
         View Album
       </Button>
     </div>
