@@ -2,7 +2,13 @@ import Button from "../Button/Index";
 import styles from "./styles.module.css";
 import { StarFilled } from "@ant-design/icons";
 
-function Card({ imageUrl, rating, genres = [], shape = "Rectangle" }) {
+function Card({
+  imageUrl,
+  rating,
+  genres = [],
+  shape = "Rectangle",
+  size = "M",
+}) {
   const labelLimit = shape === "Rectangle" ? 12 : 14;
   const shortenLabel = (label = "") => {
     return label.length > labelLimit
@@ -14,7 +20,7 @@ function Card({ imageUrl, rating, genres = [], shape = "Rectangle" }) {
     <div
       className={`${styles.cardContainer} ${
         shape === "Square" && styles.square
-      }`}
+      } ${size === "L" && styles.large}`}
     >
       <div className={styles.imageContainer}>
         <img className={styles.image} src={imageUrl} alt="card" />

@@ -33,6 +33,12 @@
   color: #5a5a5a;
 }
 
+.labelSmall {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5a5a5a;
+}
+
 .inputContainer {
   display: flex;
   justify-content: center;

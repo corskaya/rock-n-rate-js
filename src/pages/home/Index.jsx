@@ -1,7 +1,12 @@
+import Description from "./components/Description";
+import styles from "./styles.module.css";
+import PopularArtists from "./components/PopularArtists";
+
 function Home() {
   return (
-    <div>
-      <h2>Home</h2>
+    <div className={styles.container}>
+      <Description />
+      <PopularArtists />
     </div>
   );
 }

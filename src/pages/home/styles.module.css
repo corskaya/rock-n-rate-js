@@ -1,0 +1,135 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 48px;
+}
+
+.descriptionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.descriptionHeader {
+  font-size: 2.7em;
+  font-weight: 700;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.02em;
+  margin: 0 0 20px 0;
+}
+
+.descriptionText {
+  font-size: 0.95em;
+  color: #ccc;
+  width: 690px;
+  letter-spacing: -0.02em;
+  line-height: 21px;
+  text-align: center;
+  margin: 0 0 32px 0;
+}
+
+.labelSmall {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5a5a5a;
+}
+
+.popularArtistsContentContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+}
+
+.popularArtistsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 1100px;
+  height: 500px;
+}
+
+.popularArtistsHeader {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  row-gap: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0 8px 12px;
+}
+
+.popularArtistsTextContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.popularArtistsText {
+  font-size: 18px;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.popularArtistsTextIcon {
+  font-size: 20px;
+  color: #6ac045;
+}
+
+.popularArtistsMoreContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+
+.popularArtistsMore {
+  font-size: 18px;
+  font-weight: 700;
+  color: #428bca;
+  transition: 0.3s;
+}
+
+.popularArtistsMore:hover {
+  font-size: 18px;
+  font-weight: 700;
+  color: #3273ac;
+  cursor: pointer;
+}
+
+.popularArtistsMoreIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.popularArtistsContent {
+  margin-top: 8px;
+  width: 1100px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+}
+
+.popularArtistsCardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.popularArtistsCardLabelLink {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.3s;
+  margin-top: 4px;
+}
+
+.popularArtistsCardLabel {
+  cursor: pointer;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.popularArtistsCardLabelLink:hover > .cardLabel {
+  color: #919191;
+}
