@@ -27,7 +27,7 @@
   letter-spacing: -0.02em;
   line-height: 21px;
   text-align: center;
-  margin: 0 0 32px 0;
+  margin: 0;
 }
 
 .labelSmall {
@@ -36,17 +36,20 @@
   color: #5a5a5a;
 }
 
-.popularArtistsContentContainer {
+/* popular artists */
+
+.popularArtistsBackground {
+  width: 100%;
+  background: linear-gradient(to bottom, transparent, #1d1d1d);
   display: flex;
   justify-content: center;
-  padding-top: 16px;
 }
 
 .popularArtistsContainer {
   display: flex;
   flex-direction: column;
   width: 1100px;
-  height: 500px;
+  padding: 32px 0 40px;
 }
 
 .popularArtistsHeader {
@@ -67,7 +70,6 @@
 .popularArtistsText {
   font-size: 18px;
   color: #fff;
-  transition: 0.3s;
 }
 
 .popularArtistsTextIcon {
@@ -101,6 +103,12 @@
   height: 20px;
 }
 
+.popularArtistsContentContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+}
+
 .popularArtistsContent {
   margin-top: 8px;
   width: 1100px;
@@ -112,7 +120,7 @@
 .popularArtistsCardContainer {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .popularArtistsCardLabelLink {
@@ -121,7 +129,6 @@
   cursor: pointer;
   color: #fff;
   transition: 0.3s;
-  margin-top: 4px;
 }
 
 .popularArtistsCardLabel {
@@ -130,6 +137,148 @@
   transition: 0.3s;
 }
 
-.popularArtistsCardLabelLink:hover > .cardLabel {
+.popularArtistsCardLabelLink:hover > .popularArtistsCardLabel {
   color: #919191;
+}
+
+/* popular albums */
+
+.popularAlbumsBackground {
+  width: 100%;
+  background-color: #171717;
+  display: flex;
+  justify-content: center;
+}
+
+.popularAlbumsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 1100px;
+  padding: 32px 0;
+}
+
+.popularAlbumsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popularAlbumsText {
+  font-size: 18px;
+  color: #fff;
+}
+
+.popularAlbumsBrowseAll {
+  font-size: 0.9em;
+  text-decoration: none;
+  color: #829191;
+  transition: 0.5s;
+}
+
+.popularAlbumsBrowseAll:hover {
+  color: #f1ffff;
+}
+
+.popularAlbumsContentContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+}
+
+.popularAlbumsContent {
+  margin-top: 16px;
+  width: 1100px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  row-gap: 20px;
+}
+
+.popularAlbumsCardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.popularAlbumsCardLabelLink {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.3s;
+  margin-top: 3px;
+}
+
+.popularAlbumsCardLabel {
+  cursor: pointer;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.popularAlbumsCardLabelLink:hover > .popularAlbumsCardLabel {
+  color: #919191;
+}
+
+/* popular songs */
+
+.popularSongsBackground {
+  width: 100%;
+  background-color: #1d1d1d;
+  display: flex;
+  justify-content: center;
+}
+
+.popularSongsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 1100px;
+  padding: 32px 0 48px;
+}
+
+.popularSongsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popularSongsText {
+  font-size: 18px;
+  color: #fff;
+}
+
+.popularSongsBrowseAll {
+  font-size: 0.9em;
+  text-decoration: none;
+  color: #829191;
+  transition: 0.5s;
+}
+
+.popularSongsBrowseAll:hover {
+  color: #f1ffff;
+}
+
+.popularSongsContentContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+}
+
+.popularSongsContent {
+  margin-top: 16px;
+  width: 1100px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  column-gap: 16px;
+  row-gap: 16px;
+}
+
+.popularSongsCardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.popularSongsCardLink {
+  text-decoration: none;
 }
