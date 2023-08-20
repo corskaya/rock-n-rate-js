@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { StarFilled } from "@ant-design/icons";
 import { Card, Label, Loading, Message } from "../../../components";
 import { getPopularArtists } from "../slice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import rssIcon from "../../../assets/rss-icon.png";
 import styles from "../styles.module.css";
+import { setFilters } from "../../artists/slice";
 
 function PopularArtists() {
   const {
@@ -16,6 +17,12 @@ function PopularArtists() {
     popularArtistsErrorMessage,
   } = useSelector((state) => state.home);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const navigateToPopularArtists = () => {
+    dispatch(setFilters({ orderBy: "Popularity" }));
+    navigate("/artists");
+  };
 
   useEffect(() => {
     dispatch(getPopularArtists());
@@ -36,7 +43,12 @@ function PopularArtists() {
               src={rssIcon}
               alt="rss-icon"
             />
-            <div className={styles.popularArtistsMore}>more featured...</div>
+            <div
+              className={styles.popularArtistsMore}
+              onClick={navigateToPopularArtists}
+            >
+              more featured...
+            </div>
           </div>
         </div>
         <div className={styles.popularArtistsContentContainer}>

@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Label, Loading, Message, SongCard } from "../../../components";
 import { getPopularSongs } from "../slice";
 import styles from "../styles.module.css";
+import { setFilters } from "../../songs/slice";
 
 function PopularSongs() {
   const {
@@ -14,6 +15,12 @@ function PopularSongs() {
     popularSongsErrorMessage,
   } = useSelector((state) => state.home);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const navigateToPopularSongs = () => {
+    dispatch(setFilters({ orderBy: "Popularity" }));
+    navigate("/songs");
+  };
 
   useEffect(() => {
     dispatch(getPopularSongs());
@@ -24,9 +31,12 @@ function PopularSongs() {
       <div className={styles.popularSongsContainer}>
         <div className={styles.popularSongsHeader}>
           <Label className={styles.popularSongsText}>Popular Songs</Label>
-          <Link className={styles.popularSongsBrowseAll} to={"/songs"}>
+          <span
+            className={styles.popularSongsBrowseAll}
+            onClick={navigateToPopularSongs}
+          >
             Browse All
-          </Link>
+          </span>
         </div>
         <div className={styles.popularSongsContentContainer}>
           {popularSongsPending && <Loading />}

@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Card, Label, Loading, Message } from "../../../components";
 import { getPopularAlbums } from "../slice";
 import moment from "moment/moment";
 import styles from "../styles.module.css";
+import { setFilters } from "../../albums/slice";
 
 function PopularAlbums() {
   const {
@@ -15,6 +16,12 @@ function PopularAlbums() {
     popularAlbumsErrorMessage,
   } = useSelector((state) => state.home);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const navigateToPopularAlbums = () => {
+    dispatch(setFilters({ orderBy: "Popularity" }));
+    navigate("/albums");
+  };
 
   useEffect(() => {
     dispatch(getPopularAlbums());
@@ -25,9 +32,12 @@ function PopularAlbums() {
       <div className={styles.popularAlbumsContainer}>
         <div className={styles.popularAlbumsHeader}>
           <Label className={styles.popularAlbumsText}>Popular Albums</Label>
-          <Link className={styles.popularAlbumsBrowseAll} to={"/albums"}>
+          <span
+            className={styles.popularAlbumsBrowseAll}
+            onClick={navigateToPopularAlbums}
+          >
             Browse All
-          </Link>
+          </span>
         </div>
         <div className={styles.popularAlbumsContentContainer}>
           {popularAlbumsPending && <Loading />}

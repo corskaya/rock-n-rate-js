@@ -170,8 +170,8 @@
 
 .popularAlbumsBrowseAll {
   font-size: 0.9em;
-  text-decoration: none;
   color: #829191;
+  cursor: pointer;
   transition: 0.5s;
 }
 
@@ -248,8 +248,8 @@
 
 .popularSongsBrowseAll {
   font-size: 0.9em;
-  text-decoration: none;
   color: #829191;
+  cursor: pointer;
   transition: 0.5s;
 }
 
