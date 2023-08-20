@@ -34,12 +34,15 @@ function Filter() {
   useEffect(() => {
     dispatch(getAlbums({ ...filters, page }));
     setIsFiltered(JSON.stringify(defaultFilters) !== JSON.stringify(filters));
+    // eslint-disable-next-line
+  }, [dispatch, page]);
 
+  useEffect(() => {
     return () => {
       dispatch(setFilters(defaultFilters));
     };
     // eslint-disable-next-line
-  }, [dispatch, page]);
+  }, []);
 
   return (
     <Form className={styles.formContainer} onFinish={onSearch}>
@@ -120,6 +123,7 @@ function Filter() {
               { label: "Oldest", value: "Oldest" },
               { label: "Rating", value: "Rating" },
               { label: "Year", value: "Year" },
+              { label: "Popularity", value: "Popularity" },
             ]}
             onChange={(e) => dispatch(setFilters({ orderBy: e.target.value }))}
           />
