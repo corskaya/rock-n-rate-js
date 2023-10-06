@@ -17,6 +17,12 @@ const initialState = {
     year: "All",
     orderBy: "Latest",
   },
+  toastStatus: {
+    show: false,
+    title: null,
+    message: null,
+    type: "info",
+  },
 };
 
 export const getSongs = createAsyncThunk(

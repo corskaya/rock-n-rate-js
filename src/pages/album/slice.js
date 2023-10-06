@@ -21,6 +21,12 @@ const initialState = {
   removeRatingRejected: false,
   removeRatingErrorMessage: null,
   showRateModal: false,
+  toastStatus: {
+    show: false,
+    title: null,
+    message: null,
+    type: "info",
+  },
 };
 
 export const getAlbum = createAsyncThunk(

@@ -21,6 +21,12 @@ const initialState = {
   removeRatingRejected: false,
   removeRatingErrorMessage: null,
   showRateModal: false,
+  toastStatus: {
+    show: false,
+    title: null,
+    message: null,
+    type: "info",
+  },
 };
 
 export const getArtist = createAsyncThunk(
@@ -106,6 +112,9 @@ const artistReducer = createSlice({
     setShowRateModal: (state, action) => {
       state.showRateModal = action.payload;
     },
+    setToastStatus: (state, action) => {
+      state.toastStatus = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -178,6 +187,6 @@ const artistReducer = createSlice({
   },
 });
 
-export const { setShowRateModal } = artistReducer.actions;
+export const { setShowRateModal, setToastStatus } = artistReducer.actions;
 
 export default artistReducer.reducer;

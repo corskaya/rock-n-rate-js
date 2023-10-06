@@ -17,6 +17,12 @@ const initialState = {
   popularSongsRejected: false,
   popularSongs: [],
   popularSongsErrorMessage: null,
+  toastStatus: {
+    show: false,
+    title: null,
+    message: null,
+    type: "info",
+  },
 };
 
 export const getPopularArtists = createAsyncThunk(

@@ -8,6 +8,12 @@ const initialState = {
   user: null,
   token: null,
   errorMessage: null,
+  toastStatus: {
+    show: false,
+    title: null,
+    message: null,
+    type: "info",
+  },
 };
 
 export const login = createAsyncThunk(

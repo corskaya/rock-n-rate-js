@@ -6,6 +6,12 @@ const initialState = {
   registerFulfilled: false,
   registerRejected: false,
   errorMessage: null,
+  toastStatus: {
+    show: false,
+    title: null,
+    message: null,
+    type: "info",
+  },
 };
 
 export const register = createAsyncThunk(
@@ -42,6 +48,12 @@ const registerReducer = createSlice({
         state.registerPending = false;
         state.registerRejected = false;
         state.registerFulfilled = true;
+        state.toastStatus = {
+          show: true,
+          title: "Successful",
+          message: "Account registered. Please login.",
+          type: "success",
+        };
       })
       .addCase(register.rejected, (state, { payload }) => {
         state.registerPending = false;
