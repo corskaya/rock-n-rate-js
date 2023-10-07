@@ -50,6 +50,9 @@ const loginReducer = createSlice({
       localStorage.removeItem("token");
       action.payload.navigate("/");
     },
+    setToastStatus: (state, action) => {
+      state.toastStatus = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -74,6 +77,6 @@ const loginReducer = createSlice({
   },
 });
 
-export const { setLoginStatus, logout } = loginReducer.actions;
+export const { setLoginStatus, logout, setToastStatus } = loginReducer.actions;
 
 export default loginReducer.reducer;

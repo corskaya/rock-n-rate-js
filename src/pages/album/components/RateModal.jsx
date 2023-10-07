@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CloseOutlined, StarFilled, StarOutlined } from "@ant-design/icons";
 import styles from "../styles.module.css";
-import { rateAlbum, removeRating } from "../slice";
+import { rateAlbum, removeRating, setShowRateModal } from "../slice";
+import { setToastStatus } from "../../login/slice";
 import { Loading } from "../../../components";
+import { useNavigate } from "react-router-dom";
 
 const points = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 function RateModal({ show, onClose, album }) {
+  const token = useSelector((state) => state.login.token);
+  const user = useSelector((state) => state.login.user);
   const rateAlbumPending = useSelector((state) => state.album.rateAlbumPending);
   const removeRatingPending = useSelector(
     (state) => state.album.removeRatingPending
@@ -21,6 +25,7 @@ function RateModal({ show, onClose, album }) {
   const [starSize, setStarSize] = useState(60);
   const [starTextSize, setStarTextSize] = useState(22);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handlePointHover = (point) => {
     setHoveredPoint(point);
@@ -40,6 +45,19 @@ function RateModal({ show, onClose, album }) {
 
   const handleRateAlbum = () => {
     if (selectedPoint <= 0 || selectedPoint === album.ratingOfRelevantUser) {
+      return;
+    }
+    if (!token || !user) {
+      dispatch(
+        setToastStatus({
+          show: true,
+          title: "Please login",
+          message: "You must authenticate to rate. Please login.",
+          type: "error",
+        })
+      );
+      dispatch(setShowRateModal(false));
+      navigate("/login");
       return;
     }
     dispatch(rateAlbum({ id: album._id, rating: selectedPoint }));

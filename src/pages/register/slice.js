@@ -52,7 +52,7 @@ const registerReducer = createSlice({
           show: true,
           title: "Successful",
           message: "Account registered. Please login.",
-          type: "success",
+          type: "info",
         };
       })
       .addCase(register.rejected, (state, { payload }) => {
