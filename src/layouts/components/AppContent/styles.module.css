@@ -6,5 +6,6 @@
 @media (max-width: 700px) {
   .contentContainer {
     padding: 10px 0;
+    margin-top: 10px;
   }
 }
