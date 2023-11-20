@@ -5,11 +5,11 @@
 }
 
 .innerContainer {
-  width: 60vw;
+  width: 1152px;
 }
 
 .formContainer {
-  width: 48.8%;
+  width: 562px;
 }
 
 .formLabel {
@@ -56,4 +56,31 @@
 .formFooterLink:hover {
   transition: 0.5s;
   color: #85dd72;
+}
+
+@media (max-width: 1200px) {
+  .innerContainer {
+    padding-left: 126px;
+  }
+  .formContainer {
+    width: 460px;
+  }
+}
+
+@media (max-width: 1020px) {
+  .innerContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-left: 0;
+  }
+  .formContainer {
+    width: 90%;
+  }
+}
+
+@media (max-width: 760px) {
+  .formLabel {
+    text-align: center;
+  }
 }

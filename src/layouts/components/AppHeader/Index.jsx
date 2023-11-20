@@ -1,6 +1,12 @@
 import { Fragment } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { SearchOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  InboxOutlined,
+  SearchOutlined,
+  SoundOutlined,
+  TeamOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import styles from "./styles.module.css";
 import logo from "../../../assets/logo.PNG";
 import { useSelector } from "react-redux";
@@ -35,6 +41,25 @@ const secondaryNavLinks = [
   },
 ];
 
+const navIcons = [
+  {
+    icon: <TeamOutlined className={styles.navIcon} />,
+    path: "/artists",
+  },
+  {
+    icon: <InboxOutlined className={styles.navIcon} />,
+    path: "/albums",
+  },
+  {
+    icon: <SoundOutlined className={styles.navIcon} />,
+    path: "/songs",
+  },
+  {
+    icon: <UserOutlined className={styles.navIcon} />,
+    path: "/login",
+  },
+];
+
 function AppHeader() {
   const location = useLocation();
   const token = useSelector((state) => state.login.token);
@@ -56,7 +81,7 @@ function AppHeader() {
             <SearchOutlined className={styles.navInputIcon} />
             <input className={styles.navInput} placeholder="Quick search" />
           </div>
-          <nav className={styles.navContainer}>
+          <nav className={styles.navContainerWeb}>
             {secondaryNavLinks.map((navLink) => (
               <Link
                 key={navLink.path}
@@ -108,6 +133,22 @@ function AppHeader() {
                 <div>{user.username}</div>
               </Link>
             )}
+          </nav>
+          <nav className={styles.navContainerMobile}>
+            <SearchOutlined className={`${styles.navIcon} ${styles.navLink}`} />
+            {navIcons.map((navIcon) => (
+              <Link
+                key={navIcon.path}
+                className={`${styles.navLink} ${
+                  location.pathname === navIcon.path
+                    ? styles.navLinkSelected
+                    : styles.navLinkPrimary
+                }`}
+                to={navIcon.path}
+              >
+                {navIcon.icon}
+              </Link>
+            ))}
           </nav>
         </div>
       </div>

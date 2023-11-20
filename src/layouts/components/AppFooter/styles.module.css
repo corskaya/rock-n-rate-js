@@ -34,3 +34,9 @@
   transition: 0.5s;
   color: #f1ffff;
 }
+
+@media (max-width: 760px) {
+  .footerContainer {
+    height: 38px;
+  }
+}

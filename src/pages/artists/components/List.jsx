@@ -9,10 +9,18 @@ function List({ artists }) {
         <div key={artist._id} className={styles.cardContainer}>
           <Link to={`/artist/${artist._id}`}>
             <Card
+              className={styles.card}
               imageUrl={artist.image}
               rating={artist.rating}
               genres={artist.genres}
             />
+            <div className={styles.mobileCardContainer}>
+              <img
+                src={artist.image}
+                alt={artist.name}
+                className={styles.mobileCard}
+              />
+            </div>
           </Link>
           <Link to={`/artist/${artist._id}`} className={styles.cardLabelLink}>
             <Label className={styles.cardLabel}>{artist.name}</Label>
