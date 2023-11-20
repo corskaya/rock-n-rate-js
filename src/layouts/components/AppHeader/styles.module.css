@@ -134,14 +134,11 @@
   }
 }
 
-@media (max-width: 1020px) {
-  .navInputContainer {
+@media (max-width: 1000px) {
+  .navContainerWeb {
     display: none;
   }
-}
-
-@media (max-width: 900px) {
-  .navContainerWeb {
+  .navInputContainer {
     display: none;
   }
   .navContainerMobile {

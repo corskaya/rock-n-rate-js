@@ -5,11 +5,11 @@
 }
 
 .innerContainer {
-  width: 60vw;
+  width: 1152px;
 }
 
 .formContainer {
-  width: 100%;
+  width: 1124px;
 }
 
 .formLabel {
@@ -57,4 +57,34 @@
 .formFooterLink:hover {
   transition: 0.5s;
   color: #85dd72;
+}
+
+@media (max-width: 1200px) {
+  .innerContainer {
+    display: flex;
+    justify-content: center;
+  }
+  .formContainer {
+    width: 920px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .formFields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .formContainer {
+    width: 90%;
+  }
+  .formFieldContainer {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .formLabel {
+    text-align: center;
+  }
 }
