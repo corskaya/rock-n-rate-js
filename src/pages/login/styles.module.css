@@ -67,7 +67,7 @@
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1020px) {
   .innerContainer {
     display: flex;
     justify-content: center;
@@ -79,7 +79,7 @@
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 760px) {
   .formLabel {
     text-align: center;
   }

@@ -3,6 +3,7 @@ import styles from "./styles.module.css";
 import { StarFilled } from "@ant-design/icons";
 
 function Card({
+  className,
   imageUrl,
   rating,
   genres = [],
@@ -20,7 +21,7 @@ function Card({
     <div
       className={`${styles.cardContainer} ${
         shape === "Square" && styles.square
-      } ${size === "L" && styles.large}`}
+      } ${size === "L" && styles.large} ${className}`}
     >
       <div className={styles.imageContainer}>
         <img className={styles.image} src={imageUrl} alt="card" />
