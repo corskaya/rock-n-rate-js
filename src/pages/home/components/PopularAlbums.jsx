@@ -53,11 +53,19 @@ function PopularAlbums() {
                 >
                   <Link to={`/album/${album._id}`}>
                     <Card
+                      className={styles.albumCard}
                       imageUrl={album.image}
                       rating={album.rating}
                       genres={album.genres}
                       shape="Square"
                     />
+                    <div className={styles.mobileAlbumCardContainer}>
+                      <img
+                        src={album.image}
+                        alt={album.name}
+                        className={styles.mobileAlbumCard}
+                      />
+                    </div>
                   </Link>
                   <Link
                     to={`/album/${album._id}`}

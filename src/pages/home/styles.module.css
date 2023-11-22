@@ -6,6 +6,8 @@
   padding-top: 48px;
 }
 
+/* description */
+
 .descriptionContainer {
   display: flex;
   flex-direction: column;
@@ -34,6 +36,12 @@
   font-size: 14px;
   font-weight: 600;
   color: #5a5a5a;
+}
+
+@media (max-width: 1020px) {
+  .descriptionContainer {
+    display: none;
+  }
 }
 
 /* popular artists */
@@ -141,6 +149,72 @@
   color: #919191;
 }
 
+.mobileArtistCardContainer {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .popularArtistsContainer {
+    width: 960px;
+  }
+}
+
+@media (max-width: 1020px) {
+  .popularArtistsContainer {
+    width: 720px;
+    margin-top: -48px;
+  }
+
+  .artistCard {
+    display: none;
+  }
+
+  .mobileArtistCardContainer {
+    display: block;
+    width: 150px;
+    height: 225px;
+    border: 4px solid #fff;
+    border-radius: 4px;
+    transition: 0.5s;
+  }
+
+  .mobileArtistCardContainer:hover {
+    border-color: #6ac045;
+    cursor: pointer;
+  }
+
+  .mobileArtistCard {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  .popularArtistsHeader {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .emptyDiv {
+    display: none;
+  }
+
+  .popularArtistsContent {
+    justify-content: space-around;
+    grid-template-columns: repeat(2, 158px);
+    row-gap: 20px;
+  }
+
+  .popularArtistsContainer {
+    width: 90%;
+  }
+
+  .mobileArtistCardContainer {
+    width: 150px;
+    height: 225px;
+  }
+}
+
 /* popular albums */
 
 .popularAlbumsBackground {
@@ -219,6 +293,67 @@
   color: #919191;
 }
 
+.mobileAlbumCardContainer {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .popularAlbumsContainer {
+    width: 960px;
+  }
+
+  .albumCard {
+    width: 212px;
+    height: 212px;
+  }
+}
+
+@media (max-width: 1020px) {
+  .popularAlbumsContainer {
+    width: 720px;
+  }
+
+  .albumCard {
+    display: none;
+  }
+
+  .mobileAlbumCardContainer {
+    display: block;
+    width: 150px;
+    height: 150px;
+    border: 4px solid #fff;
+    border-radius: 4px;
+    transition: 0.5s;
+  }
+
+  .mobileAlbumCardContainer:hover {
+    border-color: #6ac045;
+    cursor: pointer;
+  }
+
+  .mobileAlbumCard {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  .popularAlbumsContent {
+    justify-content: space-around;
+    grid-template-columns: repeat(2, 158px);
+    row-gap: 20px;
+  }
+
+  .popularAlbumsContainer {
+    width: 90%;
+  }
+
+  .mobileAlbumCardContainer {
+    width: 150px;
+    height: 150px;
+  }
+}
+
 /* popular songs */
 
 .popularSongsBackground {
@@ -281,4 +416,40 @@
 
 .popularSongsCardLink {
   text-decoration: none;
+}
+
+@media (max-width: 1200px) {
+  .popularSongsContainer {
+    width: 960px;
+  }
+
+  .songCard {
+    width: 310px;
+  }
+}
+
+@media (max-width: 1020px) {
+  .popularSongsContainer {
+    width: 720px;
+  }
+
+  .songCard {
+    width: 230px;
+  }
+}
+
+@media (max-width: 760px) {
+  .popularSongsContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .popularSongsContainer {
+    width: 90%;
+  }
+
+  .songCard {
+    width: 332px;
+  }
 }

@@ -32,7 +32,7 @@ function PopularArtists() {
     <div className={styles.popularArtistsBackground}>
       <div className={styles.popularArtistsContainer}>
         <div className={styles.popularArtistsHeader}>
-          <div></div>
+          <div className={styles.emptyDiv}></div>
           <div className={styles.popularArtistsTextContainer}>
             <StarFilled className={styles.popularArtistsTextIcon} />
             <Label className={styles.popularArtistsText}>Popular Artists</Label>
@@ -65,11 +65,19 @@ function PopularArtists() {
                 >
                   <Link to={`/artist/${artist._id}`}>
                     <Card
+                      className={styles.artistCard}
                       imageUrl={artist.image}
                       rating={artist.rating}
                       genres={artist.genres}
                       size="L"
                     />
+                    <div className={styles.mobileArtistCardContainer}>
+                      <img
+                        src={artist.image}
+                        alt={artist.name}
+                        className={styles.mobileArtistCard}
+                      />
+                    </div>
                   </Link>
                   <Link
                     to={`/artist/${artist._id}`}
