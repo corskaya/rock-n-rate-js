@@ -54,7 +54,7 @@ function PopularSongs() {
                     to={`/song/${song._id}`}
                     className={styles.popularSongsCardLink}
                   >
-                    <SongCard song={song} />
+                    <SongCard song={song} className={styles.songCard} />
                   </Link>
                 </div>
               ))}
