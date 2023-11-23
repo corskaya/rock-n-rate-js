@@ -10,11 +10,19 @@ function List({ albums }) {
         <div key={album._id} className={styles.cardContainer}>
           <Link to={`/album/${album._id}`}>
             <Card
+              className={styles.card}
               imageUrl={album.image}
               rating={album.rating}
               genres={album.genres}
               shape="Square"
             />
+            <div className={styles.mobileCardContainer}>
+              <img
+                src={album.image}
+                alt={album.name}
+                className={styles.mobileCard}
+              />
+            </div>
           </Link>
           <Link to={`/album/${album._id}`} className={styles.cardLabelLink}>
             <Label className={styles.cardLabel}>{album.name}</Label>
