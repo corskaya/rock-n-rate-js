@@ -8,7 +8,7 @@ function List({ songs }) {
       {songs.map((song) => (
         <div key={song._id} className={styles.cardContainer}>
           <Link to={`/song/${song._id}`} className={styles.songCardLink}>
-            <SongCard song={song} />
+            <SongCard song={song} className={styles.card} />
           </Link>
         </div>
       ))}
