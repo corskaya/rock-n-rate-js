@@ -61,3 +61,10 @@
 .closeBtn:hover {
   color: #dbdbdb;
 }
+
+@media (max-width: 760px) {
+  .container {
+    top: 90%;
+    left: 50%;
+  }
+}
