@@ -12,15 +12,17 @@ function Info() {
 
   return (
     <div className={styles.infoContainer}>
-      <h1 className={`${styles.artistName} ${styles.textShadow}`}>
-        {artist.name}
-      </h1>
-      <h3 className={`${styles.foundationYear} ${styles.textShadow}`}>
-        {artist.foundationYear}
-      </h3>
-      <h3 className={`${styles.genres} ${styles.textShadow}`}>
-        {artist.genres.join(" / ")}
-      </h3>
+      <div className={styles.mainInfoContainer}>
+        <h1 className={`${styles.artistName} ${styles.textShadow}`}>
+          {artist.name}
+        </h1>
+        <h3 className={`${styles.foundationYear} ${styles.textShadow}`}>
+          {artist.foundationYear}
+        </h3>
+        <h3 className={`${styles.genres} ${styles.textShadow}`}>
+          {artist.genres.join(" / ")}
+        </h3>
+      </div>
       <div className={styles.ratingsContainer}>
         <div className={styles.ratingContainer}>
           <Label className={`${styles.ratingText} ${styles.textShadow}`}>
@@ -54,7 +56,7 @@ function Info() {
           </div>
         </div>
       </div>
-      <p className={styles.aboutText}>{artist.about}</p>
+      <p className={styles.aboutTextWeb}>{artist.about}</p>
       <RateModal
         show={showRateModal}
         onClose={() => dispatch(setShowRateModal(false))}

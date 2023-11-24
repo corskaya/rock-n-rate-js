@@ -6,6 +6,8 @@ import { getArtist, getSimilarArtists } from "./slice";
 import Visuals from "./components/Visuals";
 import Info from "./components/Info";
 import Suggestions from "./components/Suggestions";
+import MobileMainInfo from "./components/MobileMainInfo";
+import MobileAbout from "./components/MobileAbout";
 import { Loading, Message } from "../../components";
 
 function Artist() {
@@ -23,11 +25,15 @@ function Artist() {
     <div className={styles.container}>
       {artistPending && <Loading size="L" />}
       {artistFulfilled && (
-        <div className={styles.artistContainer}>
-          <Visuals />
-          <Info />
-          <Suggestions />
-        </div>
+        <>
+          <MobileMainInfo />
+          <div className={styles.artistWebContainer}>
+            <Visuals />
+            <Info />
+            <Suggestions />
+          </div>
+          <MobileAbout />
+        </>
       )}
       {artistRejected && <Message>{artistErrorMessage}</Message>}
     </div>

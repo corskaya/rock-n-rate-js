@@ -4,6 +4,7 @@ import styles from "../styles.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import RateModal from "./RateModal";
 import { setShowRateModal } from "../slice";
+import moment from "moment/moment";
 
 function Info() {
   const album = useSelector((state) => state.album.album);
@@ -12,15 +13,17 @@ function Info() {
 
   return (
     <div className={styles.infoContainer}>
-      <h1 className={`${styles.albumName} ${styles.textShadow}`}>
-        {album.name}
-      </h1>
-      <h3 className={`${styles.foundationYear} ${styles.textShadow}`}>
-        {album.foundationYear}
-      </h3>
-      <h3 className={`${styles.genres} ${styles.textShadow}`}>
-        {album.genres.join(" / ")}
-      </h3>
+      <div className={styles.mainInfoContainer}>
+        <h1 className={`${styles.albumName} ${styles.textShadow}`}>
+          {album.name}
+        </h1>
+        <h3 className={`${styles.foundationYear} ${styles.textShadow}`}>
+          {moment(album.releaseDate).format("YYYY")}
+        </h3>
+        <h3 className={`${styles.genres} ${styles.textShadow}`}>
+          {album.genres.join(" / ")}
+        </h3>
+      </div>
       <div className={styles.ratingsContainer}>
         <div className={styles.ratingContainer}>
           <Label className={`${styles.ratingText} ${styles.textShadow}`}>
@@ -54,7 +57,7 @@ function Info() {
           </div>
         </div>
       </div>
-      <p className={styles.aboutText}>{album.about}</p>
+      <p className={styles.aboutTextWeb}>{album.about}</p>
       <RateModal
         show={showRateModal}
         onClose={() => dispatch(setShowRateModal(false))}
