@@ -6,6 +6,8 @@ import { getAlbum, getSimilarAlbums } from "./slice";
 import Visuals from "./components/Visuals";
 import Info from "./components/Info";
 import Suggestions from "./components/Suggestions";
+import MobileMainInfo from "./components/MobileMainInfo";
+import MobileAbout from "./components/MobileAbout";
 import { Loading, Message } from "../../components";
 
 function Album() {
@@ -23,11 +25,15 @@ function Album() {
     <div className={styles.container}>
       {albumPending && <Loading size="L" />}
       {albumFulfilled && (
-        <div className={styles.albumContainer}>
-          <Visuals />
-          <Info />
-          <Suggestions />
-        </div>
+        <>
+          <MobileMainInfo />
+          <div className={styles.albumWebContainer}>
+            <Visuals />
+            <Info />
+            <Suggestions />
+          </div>
+          <MobileAbout />
+        </>
       )}
       {albumRejected && <Message>{albumErrorMessage}</Message>}
     </div>

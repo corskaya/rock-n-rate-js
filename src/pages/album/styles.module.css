@@ -10,7 +10,11 @@
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
 }
 
-.albumContainer {
+.mobileMainInfoContainer {
+  display: none;
+}
+
+.albumWebContainer {
   width: 1100px;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
@@ -119,12 +123,12 @@
   padding-top: 2px;
 }
 
-.aboutText {
+.aboutTextWeb {
   font-size: 15px;
   white-space: pre-wrap;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 10;
+  -webkit-line-clamp: 14;
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0;
@@ -331,4 +335,134 @@
 .rateModalRemoveBtn:hover {
   background-color: #242930;
   cursor: pointer;
+}
+
+.mobileAboutContainer {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .albumWebContainer {
+    width: 920px;
+    display: grid;
+    grid-template-columns: 3fr 5fr 3fr;
+  }
+
+  .infoContainer {
+    padding: 0 28px;
+  }
+}
+
+@media (max-width: 1020px) {
+  .albumWebContainer {
+    width: 720px;
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+  }
+
+  .suggestionsContainer {
+    display: none;
+  }
+
+  .imageContainer {
+    width: 190px;
+    height: 190px;
+  }
+
+  .visualButton {
+    width: 198px;
+  }
+
+  .infoContainer {
+    padding: 0 48px 0 20px;
+  }
+
+  .albumName {
+    font-size: 26px;
+    margin-bottom: 6px;
+  }
+
+  .foundationYear {
+    font-size: 17px;
+    margin-bottom: 14px;
+  }
+
+  .aboutTextWeb {
+    -webkit-line-clamp: 10;
+  }
+}
+
+@media (max-width: 760px) {
+  .mobileMainInfoContainer {
+    display: block;
+    width: 90%;
+    margin: -20px 0 -14px;
+  }
+
+  .albumWebContainer {
+    width: 90%;
+    display: flex;
+  }
+
+  .mainInfoContainer {
+    display: none;
+  }
+
+  .ratingsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 36px;
+  }
+
+  .imageContainer {
+    width: 180px;
+    height: 180px;
+  }
+
+  .visualButton {
+    width: 188px;
+  }
+
+  .infoContainer {
+    padding: 0 0 0 20px;
+  }
+
+  .albumName {
+    font-size: 21px;
+  }
+
+  .foundationYear {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .genres {
+    font-size: 16px;
+  }
+
+  .aboutTextWeb {
+    display: none;
+  }
+
+  .mobileAboutContainer {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 32px;
+    margin-bottom: -24px;
+  }
+
+  .aboutTextMobile {
+    color: #919191;
+    font-size: 15px;
+    white-space: pre-wrap;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 15;
+    line-height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+  }
 }
