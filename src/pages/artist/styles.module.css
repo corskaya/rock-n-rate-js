@@ -465,4 +465,8 @@
     text-overflow: ellipsis;
     margin: 0;
   }
+
+  .rateModalContent {
+    width: 86%;
+  }
 }
