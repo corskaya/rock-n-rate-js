@@ -6,6 +6,8 @@ import { getSong, getSimilarSongs } from "./slice";
 import Visuals from "./components/Visuals";
 import Info from "./components/Info";
 import Suggestions from "./components/Suggestions";
+import MobileMainInfo from "./components/MobileMainInfo";
+import MobileAbout from "./components/MobileAbout";
 import { Loading, Message } from "../../components";
 
 function Song() {
@@ -23,11 +25,15 @@ function Song() {
     <div className={styles.container}>
       {songPending && <Loading size="L" />}
       {songFulfilled && (
-        <div className={styles.songContainer}>
-          <Visuals />
-          <Info />
-          <Suggestions />
-        </div>
+        <>
+          <MobileMainInfo />
+          <div className={styles.songWebContainer}>
+            <Visuals />
+            <Info />
+            <Suggestions />
+          </div>
+          <MobileAbout />
+        </>
       )}
       {songRejected && <Message>{songErrorMessage}</Message>}
     </div>
