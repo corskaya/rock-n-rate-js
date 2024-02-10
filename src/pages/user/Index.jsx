@@ -7,6 +7,7 @@ import styles from "./styles.module.css";
 import Settings from "./components/Settings";
 import Statistics from "./components/Statistics";
 import About from "./components/About";
+import Logout from "./components/Logout";
 
 function User() {
   const { username } = useParams();
@@ -27,6 +28,7 @@ function User() {
           <Settings />
           <Statistics />
           <About />
+          <Logout />
         </div>
       )}
     </div>
