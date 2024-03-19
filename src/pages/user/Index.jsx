@@ -1,28 +1,36 @@
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../login/slice";
-import { Button } from "../../components";
-import { useNavigate } from "react-router-dom";
+import { getUser } from "./slice";
+import { Loading, Message } from "../../components";
+import styles from "./styles.module.css";
+import Settings from "./components/Settings";
+import Statistics from "./components/Statistics";
+import About from "./components/About";
+import Logout from "./components/Logout";
 
 function User() {
-  const user = useSelector((state) => state.login.user);
+  const { username } = useParams();
+  const { userPending, userFulfilled, userRejected, userErrorMessage } =
+    useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const properties = user ? Object.entries(user) : [];
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(getUser(username));
+  }, [dispatch, username]);
 
   return (
-    <div>
-      <h2>User</h2>
-      {properties.map(([key, value]) => (
-        <div key={key} style={{ marginBottom: 8 }}>
-          <strong>{key}:</strong> {value}
+    <div className={styles.container}>
+      {userPending && <Loading />}
+      {userRejected && <Message>{userErrorMessage}</Message>}
+      {userFulfilled && (
+        <div className={styles.profileContainer}>
+          <Settings />
+          <Statistics />
+          <About />
+          <Logout />
         </div>
-      ))}
-      <Button
-        style={{ marginTop: 16 }}
-        onClick={() => dispatch(logout({ navigate }))}
-      >
-        Logout
-      </Button>
+      )}
     </div>
   );
 }

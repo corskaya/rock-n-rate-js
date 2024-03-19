@@ -56,7 +56,7 @@ const navIcons = [
   },
   {
     icon: <UserOutlined className={styles.navIcon} />,
-    path: "/login",
+    path: "/user",
   },
 ];
 
@@ -144,7 +144,13 @@ function AppHeader() {
                     ? styles.navLinkSelected
                     : styles.navLinkPrimary
                 }`}
-                to={navIcon.path}
+                to={
+                  navIcon.path === "/user"
+                    ? token && user
+                      ? `/user/${user.username}`
+                      : "/login"
+                    : navIcon.path
+                }
               >
                 {navIcon.icon}
               </Link>
