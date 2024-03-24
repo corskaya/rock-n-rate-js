@@ -18,23 +18,23 @@ function Statistics() {
               {moment(user.createdAt).format("MMMM DD, YYYY")}
             </Label>
           </div>
-          <div className={styles.statisticsPair}>
+          {/* <div className={styles.statisticsPair}>
             <Label className={styles.label}>Last Seen:</Label>
             <Label className={styles.data}>
               {moment(user.updatedAt).format("MMMM DD, YYYY [at] hh:mm A")}
             </Label>
-          </div>
+          </div> */}
           <div className={styles.statisticsPair}>
             <Label className={styles.label}>Role:</Label>
             <Label className={styles.data}>{user.role}</Label>
           </div>
           <div className={styles.statisticsPair}>
             <Label className={styles.label}>Ratings:</Label>
-            <Label className={styles.data}>12</Label>
+            <Label className={styles.data}>{user.ratingCount}</Label>
           </div>
           <div className={styles.statisticsPair}>
             <Label className={styles.label}>Comments:</Label>
-            <Label className={styles.data}>0</Label>
+            <Label className={styles.data}>{user.commentCount}</Label>
           </div>
         </div>
       </div>
