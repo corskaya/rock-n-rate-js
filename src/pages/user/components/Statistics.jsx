@@ -18,12 +18,6 @@ function Statistics() {
               {moment(user.createdAt).format("MMMM DD, YYYY")}
             </Label>
           </div>
-          {/* <div className={styles.statisticsPair}>
-            <Label className={styles.label}>Last Seen:</Label>
-            <Label className={styles.data}>
-              {moment(user.updatedAt).format("MMMM DD, YYYY [at] hh:mm A")}
-            </Label>
-          </div> */}
           <div className={styles.statisticsPair}>
             <Label className={styles.label}>Role:</Label>
             <Label className={styles.data}>{user.role}</Label>
@@ -40,7 +34,7 @@ function Statistics() {
       </div>
       <div className={styles.statisticsImageContainer}>
         <img
-          src={user.image || defaultProfilePicture}
+          src={user.avatar || defaultProfilePicture}
           alt={`${user.username} avatar`}
           className={styles.statisticsImage}
         />
