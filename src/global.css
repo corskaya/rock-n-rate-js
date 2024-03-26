@@ -7,3 +7,12 @@ body {
   background-color: #1d1d1d;
   color: #f1ffff;
 }
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #919191;
+  border-radius: 4px;
+}
