@@ -10,7 +10,7 @@ const instance = axios.create({
 // response middleware
 instance.interceptors.response.use(
   (response) => {
-    console.log("--response", response);
+    // console.log("--response", response);
     return response;
   },
   (error) => {
@@ -26,7 +26,7 @@ instance.interceptors.response.use(
 // request middleware
 instance.interceptors.request.use(
   (request) => {
-    console.log("--request", request);
+    // console.log("--request", request);
     return request;
   },
   (error) => {

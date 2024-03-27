@@ -1,16 +1,37 @@
+import { CloseOutlined } from "@ant-design/icons";
 import styles from "./styles.module.css";
 
-function Modal({ show, onClose, title, children }) {
+function Modal({
+  show,
+  onClose = () => {},
+  title,
+  titleSuffix,
+  centerBody = false,
+  children,
+}) {
   return (
     show && (
       <div className={styles.modalContainer}>
         <div onClick={onClose} className={styles.overlay}></div>
         <div className={styles.modalContent}>
-          <h2>{title}</h2>
-          <div>{children}</div>
-          <button className={styles.closeModal} onClick={onClose}>
-            Close
-          </button>
+          <div className={styles.modalTitleContainer}>
+            <h2 className={styles.modalTitle}>{title}</h2>
+            {titleSuffix && (
+              <h4 className={styles.modalTitleSuffix}>{titleSuffix}</h4>
+            )}
+          </div>
+          <div
+            className={`${styles.modalBodyContainer} ${
+              centerBody ? styles.modalBodyCenter : ""
+            }`}
+          >
+            <div>{children}</div>
+          </div>
+          <div className={styles.rateModalCloseBtnContainer}>
+            <div className={styles.rateModalCloseBtn} onClick={onClose}>
+              <CloseOutlined className={styles.rateModalCloseIcon} />
+            </div>
+          </div>
         </div>
       </div>
     )

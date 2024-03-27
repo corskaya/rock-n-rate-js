@@ -12,7 +12,7 @@ function Logout() {
 
   return (
     <>
-      {user._id === loginUser._id && (
+      {user._id === loginUser?._id && (
         <div className={styles.logoutContainer}>
           <Button
             className={styles.logoutBtn}

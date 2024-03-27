@@ -11,13 +11,13 @@ function Settings() {
     <div className={styles.settingsContainer}>
       <div className={styles.statisticsImageContainerMobile}>
         <img
-          src={user.image || defaultProfilePicture}
+          src={user.avatar || defaultProfilePicture}
           alt={`${user.username} avatar`}
           className={styles.statisticsImageMobile}
         />
       </div>
       <h1 className={styles.username}>{user.username}</h1>
-      {user._id === loginUser._id && (
+      {user._id === loginUser?._id && (
         <Button className={styles.settingsBtn}>Profile Settings</Button>
       )}
     </div>
