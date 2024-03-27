@@ -160,7 +160,7 @@ function RateModal({ show, onClose, artist }) {
           </div>
           <div className={styles.rateModalCloseBtnContainer}>
             <div className={styles.rateModalCloseBtn} onClick={onClose}>
-              <CloseOutlined className={styles.rateModalCloseIcon} />
+              <CloseOutlined />
             </div>
           </div>
         </div>

@@ -11,7 +11,12 @@ const initialState = {
   similarAlbumsFulfilled: false,
   similarAlbumsRejected: false,
   similarAlbums: [],
-  similarAlbumssErrorMessage: null,
+  similarAlbumsErrorMessage: null,
+  ratingsPending: false,
+  ratingsFulfilled: false,
+  ratingsRejected: false,
+  ratings: [],
+  ratingsErrorMessage: null,
   rateAlbumPending: false,
   rateAlbumFulfilled: false,
   rateAlbumRejected: false,
@@ -21,6 +26,7 @@ const initialState = {
   removeRatingRejected: false,
   removeRatingErrorMessage: null,
   showRateModal: false,
+  showRatingsModal: false,
   toastStatus: {
     show: false,
     title: null,
@@ -53,6 +59,25 @@ export const getSimilarAlbums = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const { data, status } = await get(`/album/similarAlbums/${id}`);
+
+      if (status !== 200) {
+        return thunkAPI.rejectWithValue(data);
+      }
+
+      return data;
+    } catch (e) {
+      return e.response
+        ? thunkAPI.rejectWithValue(e.response.data)
+        : thunkAPI.rejectWithValue(e);
+    }
+  }
+);
+
+export const getRatings = createAsyncThunk(
+  "albums/getRatings",
+  async (id, thunkAPI) => {
+    try {
+      const { data, status } = await get(`/album/ratings/${id}`);
 
       if (status !== 200) {
         return thunkAPI.rejectWithValue(data);
@@ -112,6 +137,9 @@ const albumReducer = createSlice({
     setShowRateModal: (state, action) => {
       state.showRateModal = action.payload;
     },
+    setShowRatingsModal: (state, action) => {
+      state.showRatingsModal = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -145,7 +173,23 @@ const albumReducer = createSlice({
       .addCase(getSimilarAlbums.rejected, (state, { payload }) => {
         state.similarAlbumsPending = false;
         state.similarAlbumsRejected = true;
-        state.similarAlbumssErrorMessage = payload.message;
+        state.similarAlbumsErrorMessage = payload.message;
+      })
+      .addCase(getRatings.pending, (state) => {
+        state.ratingsPending = true;
+        state.ratingsRejected = false;
+        state.ratings = [];
+      })
+      .addCase(getRatings.fulfilled, (state, { payload }) => {
+        state.ratingsPending = false;
+        state.ratingsRejected = false;
+        state.ratingsFulfilled = true;
+        state.ratings = payload.ratings;
+      })
+      .addCase(getRatings.rejected, (state, { payload }) => {
+        state.ratingsPending = false;
+        state.ratingsRejected = true;
+        state.ratingsErrorMessage = payload.message;
       })
       .addCase(rateAlbum.pending, (state) => {
         state.rateAlbumPending = true;
@@ -184,6 +228,6 @@ const albumReducer = createSlice({
   },
 });
 
-export const { setShowRateModal } = albumReducer.actions;
+export const { setShowRateModal, setShowRatingsModal } = albumReducer.actions;
 
 export default albumReducer.reducer;

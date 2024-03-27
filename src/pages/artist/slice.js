@@ -12,6 +12,11 @@ const initialState = {
   similarArtistsRejected: false,
   similarArtists: [],
   similarArtistsErrorMessage: null,
+  ratingsPending: false,
+  ratingsFulfilled: false,
+  ratingsRejected: false,
+  ratings: [],
+  ratingsErrorMessage: null,
   rateArtistPending: false,
   rateArtistFulfilled: false,
   rateArtistRejected: false,
@@ -21,6 +26,7 @@ const initialState = {
   removeRatingRejected: false,
   removeRatingErrorMessage: null,
   showRateModal: false,
+  showRatingsModal: false,
   toastStatus: {
     show: false,
     title: null,
@@ -53,6 +59,25 @@ export const getSimilarArtists = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const { data, status } = await get(`/artist/similarArtists/${id}`);
+
+      if (status !== 200) {
+        return thunkAPI.rejectWithValue(data);
+      }
+
+      return data;
+    } catch (e) {
+      return e.response
+        ? thunkAPI.rejectWithValue(e.response.data)
+        : thunkAPI.rejectWithValue(e);
+    }
+  }
+);
+
+export const getRatings = createAsyncThunk(
+  "artists/getRatings",
+  async (id, thunkAPI) => {
+    try {
+      const { data, status } = await get(`/artist/ratings/${id}`);
 
       if (status !== 200) {
         return thunkAPI.rejectWithValue(data);
@@ -112,6 +137,9 @@ const artistReducer = createSlice({
     setShowRateModal: (state, action) => {
       state.showRateModal = action.payload;
     },
+    setShowRatingsModal: (state, action) => {
+      state.showRatingsModal = action.payload;
+    },
     setToastStatus: (state, action) => {
       state.toastStatus = action.payload;
     },
@@ -150,6 +178,22 @@ const artistReducer = createSlice({
         state.similarArtistsRejected = true;
         state.similarArtistsErrorMessage = payload.message;
       })
+      .addCase(getRatings.pending, (state) => {
+        state.ratingsPending = true;
+        state.ratingsRejected = false;
+        state.ratings = [];
+      })
+      .addCase(getRatings.fulfilled, (state, { payload }) => {
+        state.ratingsPending = false;
+        state.ratingsRejected = false;
+        state.ratingsFulfilled = true;
+        state.ratings = payload.ratings;
+      })
+      .addCase(getRatings.rejected, (state, { payload }) => {
+        state.ratingsPending = false;
+        state.ratingsRejected = true;
+        state.ratingsErrorMessage = payload.message;
+      })
       .addCase(rateArtist.pending, (state) => {
         state.rateArtistPending = true;
         state.rateArtistRejected = false;
@@ -187,6 +231,7 @@ const artistReducer = createSlice({
   },
 });
 
-export const { setShowRateModal, setToastStatus } = artistReducer.actions;
+export const { setShowRateModal, setShowRatingsModal, setToastStatus } =
+  artistReducer.actions;
 
 export default artistReducer.reducer;

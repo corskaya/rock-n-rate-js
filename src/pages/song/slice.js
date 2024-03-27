@@ -11,7 +11,12 @@ const initialState = {
   similarSongsFulfilled: false,
   similarSongsRejected: false,
   similarSongs: [],
-  similarSongssErrorMessage: null,
+  similarSongsErrorMessage: null,
+  ratingsPending: false,
+  ratingsFulfilled: false,
+  ratingsRejected: false,
+  ratings: [],
+  ratingsErrorMessage: null,
   rateSongPending: false,
   rateSongFulfilled: false,
   rateSongRejected: false,
@@ -21,6 +26,7 @@ const initialState = {
   removeRatingRejected: false,
   removeRatingErrorMessage: null,
   showRateModal: false,
+  showRatingsModal: false,
   toastStatus: {
     show: false,
     title: null,
@@ -53,6 +59,25 @@ export const getSimilarSongs = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const { data, status } = await get(`/song/similarSongs/${id}`);
+
+      if (status !== 200) {
+        return thunkAPI.rejectWithValue(data);
+      }
+
+      return data;
+    } catch (e) {
+      return e.response
+        ? thunkAPI.rejectWithValue(e.response.data)
+        : thunkAPI.rejectWithValue(e);
+    }
+  }
+);
+
+export const getRatings = createAsyncThunk(
+  "songs/getRatings",
+  async (id, thunkAPI) => {
+    try {
+      const { data, status } = await get(`/song/ratings/${id}`);
 
       if (status !== 200) {
         return thunkAPI.rejectWithValue(data);
@@ -112,6 +137,9 @@ const songReducer = createSlice({
     setShowRateModal: (state, action) => {
       state.showRateModal = action.payload;
     },
+    setShowRatingsModal: (state, action) => {
+      state.showRatingsModal = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -145,7 +173,23 @@ const songReducer = createSlice({
       .addCase(getSimilarSongs.rejected, (state, { payload }) => {
         state.similarSongsPending = false;
         state.similarSongsRejected = true;
-        state.similarSongssErrorMessage = payload.message;
+        state.similarSongsErrorMessage = payload.message;
+      })
+      .addCase(getRatings.pending, (state) => {
+        state.ratingsPending = true;
+        state.ratingsRejected = false;
+        state.ratings = [];
+      })
+      .addCase(getRatings.fulfilled, (state, { payload }) => {
+        state.ratingsPending = false;
+        state.ratingsRejected = false;
+        state.ratingsFulfilled = true;
+        state.ratings = payload.ratings;
+      })
+      .addCase(getRatings.rejected, (state, { payload }) => {
+        state.ratingsPending = false;
+        state.ratingsRejected = true;
+        state.ratingsErrorMessage = payload.message;
       })
       .addCase(rateSong.pending, (state) => {
         state.rateSongPending = true;
@@ -184,6 +228,6 @@ const songReducer = createSlice({
   },
 });
 
-export const { setShowRateModal } = songReducer.actions;
+export const { setShowRateModal, setShowRatingsModal } = songReducer.actions;
 
 export default songReducer.reducer;

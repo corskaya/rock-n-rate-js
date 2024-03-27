@@ -3,12 +3,21 @@ import { StarFilled } from "@ant-design/icons";
 import styles from "../styles.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import RateModal from "./RateModal";
-import { setShowRateModal } from "../slice";
+import { getRatings, setShowRateModal, setShowRatingsModal } from "../slice";
+import RatingsModal from "./RatingsModal";
 
 function Info() {
   const artist = useSelector((state) => state.artist.artist);
   const showRateModal = useSelector((state) => state.artist.showRateModal);
+  const showRatingsModal = useSelector(
+    (state) => state.artist.showRatingsModal
+  );
   const dispatch = useDispatch();
+
+  const handleShowRatingsModal = () => {
+    dispatch(getRatings(artist._id));
+    dispatch(setShowRatingsModal(true));
+  };
 
   return (
     <div className={styles.infoContainer}>
@@ -29,7 +38,10 @@ function Info() {
             R'NR RATING
           </Label>
           <div>
-            <div className={styles.ratingPointContainer}>
+            <div
+              className={styles.ratingPointContainer}
+              onClick={handleShowRatingsModal}
+            >
               <StarFilled className={styles.ratingIcon} />
               <div className={styles.ratingPoint}>
                 {artist.rating !== 0 ? artist.rating : "?"}
@@ -60,6 +72,11 @@ function Info() {
       <RateModal
         show={showRateModal}
         onClose={() => dispatch(setShowRateModal(false))}
+        artist={artist}
+      />
+      <RatingsModal
+        show={showRatingsModal}
+        onClose={() => dispatch(setShowRatingsModal(false))}
         artist={artist}
       />
     </div>
